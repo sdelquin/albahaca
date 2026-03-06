@@ -1,2 +1,3 @@
-# pizzerialaalbahaca
-Página web de Pizzería La Albahaca
+# Pizzería La Albahaca 🍕
+
+Página web de Pizzería La Albahaca.
