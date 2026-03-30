@@ -199,3 +199,14 @@ poedit app locale="es":
 [group('redis')]
 rq:
     uv run watchmedo auto-restart --pattern=tasks.py --recursive -- ./manage.py rqworker 
+
+# Deploy project to production server
+[group('production')]
+deploy:
+    #!/usr/bin/env bash
+    git pull
+    uv sync --no-dev --group prod
+    # npm install --no-audit --no-fund
+    uv run ./manage.py migrate
+    uv run ./manage.py collectstatic --no-input
+    supervisorctl restart albahaca
