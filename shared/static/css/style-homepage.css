@@ -2,19 +2,11 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Lato", sans-serif;
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Playfair Display", serif;
 }
 
 .hero {
   position: relative;
   height: 100vh;
-  background-image: url("../img/hero.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -39,6 +31,7 @@ h3 {
 
 /* contenido */
 .hero-content {
+  font-family: "Barriecito";
   position: static;
   z-index: 1;
   text-align: center;
@@ -59,8 +52,19 @@ h3 {
   margin-bottom: 1rem;
 }
 
+.hero-title-brand {
+  white-space: nowrap;
+}
+
+.hero-title-subbrand {
+  font-size: smaller;
+}
+
 .hero p {
   font-size: 1.2rem;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .btn {
