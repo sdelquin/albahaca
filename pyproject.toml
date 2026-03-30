@@ -11,3 +11,7 @@ dependencies = [
 dev = [
     "django-browser-reload>=1.21.0",
 ]
+
+prod = [
+    "gunicorn>=25.3.0",
+]
