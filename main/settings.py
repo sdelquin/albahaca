@@ -26,7 +26,7 @@ DEBUG = config('DEBUG', default=True, cast=config.boolean)
 
 SECRET_KEY = config('SECRET_KEY', default='django-is-awesome')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=config.list)
 
 
 # Application definition
