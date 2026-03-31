@@ -6,6 +6,7 @@ body {
 
 .hero {
   height: 100vh;
+  height: 100svh;
   background-size: cover;
   background-position: center;
   display: flex;
