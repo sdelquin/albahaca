@@ -1,0 +1,18 @@
+@media (max-width: 768px) {
+  .hero-title {
+    margin-top: 1rem;
+  }
+
+  .hero-links {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 👈 2 columnas */
+    gap: 1.25rem;
+    margin-bottom: 5rem;
+  }
+
+  .hero-links a {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+}

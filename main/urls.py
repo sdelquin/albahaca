@@ -23,5 +23,5 @@ from django.urls import include, path
 urlpatterns = [
     path('__reload__/', include('django_browser_reload.urls')),
     path(f'{settings.ADMIN_URL}', admin.site.urls),
-    path('', lambda r: render(r, 'homepage.html')),
+    path('', lambda r: render(r, 'homepage/index.html')),
 ]

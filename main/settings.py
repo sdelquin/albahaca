@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
     # CUSTOM
     'shared.apps.SharedConfig',
+    'homepage.apps.HomepageConfig',
 ]
 
 MIDDLEWARE = [

@@ -7,13 +7,7 @@ dev port="8000":
 [group('server')]
 dev0 port="8000":
     #!/usr/bin/env bash
-    IP=$(ip -br a | perl -lane 'print $1 if /^enp/ && $F[2] =~ m{([^/]+)}')
-    if grep -q $IP main/settings.py; then
-        uv run ./manage.py runserver 0.0.0.0:{{ port }}
-    else
-        echo "Add \"$IP\" to ALLOWED_HOSTS in main/settings.py"
-    fi
-    uv run manage.py runserver 0.0.0.0:80
+    uv run manage.py runserver 0.0.0.0:{{ port }}
 
 alias c:=check
 # Check Django project

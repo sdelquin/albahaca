@@ -6,7 +6,6 @@ body {
 
 .hero {
   height: 100vh;
-  height: 100svh;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -88,20 +87,5 @@ body {
   &:hover {
     background-color: rgba(255, 255, 255, 1);
     color: rgb(21, 21, 21);
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-links {
-    width: 50%;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 👈 2 columnas */
-    gap: 1.25rem;
-    margin-bottom: 5rem;
-  }
-
-  .hero-links a {
-    padding: 0.75rem;
-    font-size: 0.9rem;
   }
 }
