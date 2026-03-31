@@ -5,13 +5,13 @@ body {
 }
 
 .hero {
-  position: relative;
   height: 100vh;
   background-size: cover;
   background-position: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 /* oscurecido */
@@ -29,27 +29,17 @@ body {
   );
 }
 
-/* contenido */
-.hero-content {
-  font-family: "Barriecito";
-  position: static;
-  z-index: 1;
-  text-align: center;
-  color: white;
-  max-width: 800px;
-  padding: 20px;
-}
-
 .hero-title {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+  margin-top: 3rem;
+  color: white;
 }
 
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  font-family: Barriecito;
 }
 
 .hero-title-brand {
@@ -67,11 +57,48 @@ body {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.btn {
-  background: #c62828;
-  color: white;
-  padding: 12px 25px;
+.hero-links {
+  z-index: 1;
+  display: flex;
+  gap: 1rem;
+  width: 40%;
+  margin-bottom: 10rem;
+}
+
+.hero-links a {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(49, 49, 49);
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 0.5rem;
+  border-radius: 0.2rem;
   text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
+  &:visited {
+    color: rgb(49, 49, 49);
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgb(21, 21, 21);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 👈 2 columnas */
+    gap: 1.25rem;
+    margin-bottom: 5rem;
+  }
+
+  .hero-links a {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
 }
