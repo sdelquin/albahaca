@@ -15,8 +15,9 @@ def hashed_static(static_path: str) -> str:
     Inspiration: https://www.reddit.com/r/django/comments/ychowr/comment/itqnrvv/
     """
     url_path = static(static_path)
-    if settings.DEBUG:
-        return url_path
-    fs_path = find(static_path)
-    last_modification = os.path.getmtime(fs_path)
-    return f'{url_path}?v={last_modification}'
+    if fs_path := find(static_path):
+        if settings.DEBUG:
+            return url_path
+        last_modification = os.path.getmtime(fs_path)
+        return f'{url_path}?v={last_modification}'
+    raise FileNotFoundError(f'Static file not found: {static_path}')
