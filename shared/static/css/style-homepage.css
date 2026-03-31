@@ -31,8 +31,9 @@ body {
 
 .hero-title {
   text-align: center;
+  width: 90%;
   z-index: 1;
-  margin-top: 3rem;
+  margin-top: 2rem;
   color: white;
 }
 
@@ -61,7 +62,7 @@ body {
   z-index: 1;
   display: flex;
   gap: 1rem;
-  width: 40%;
+  width: 35%;
   margin-bottom: 10rem;
 }
 
@@ -91,6 +92,7 @@ body {
 
 @media (max-width: 768px) {
   .hero-links {
+    width: 50%;
     display: grid;
     grid-template-columns: 1fr 1fr; /* 👈 2 columnas */
     gap: 1.25rem;
