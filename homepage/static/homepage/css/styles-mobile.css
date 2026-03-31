@@ -1,4 +1,8 @@
 @media (max-width: 768px) {
+  .hero-logo {
+    width: 200px;
+  }
+
   .hero-title {
     margin-top: 1rem;
   }

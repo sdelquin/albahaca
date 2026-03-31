@@ -29,33 +29,12 @@ body {
   );
 }
 
-.hero-title {
+.hero-logo {
   text-align: center;
-  width: 90%;
+  width: 250px;
   z-index: 1;
-  margin-top: 2rem;
+  margin-top: 1rem;
   color: white;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-family: Barriecito;
-}
-
-.hero-title-brand {
-  white-space: nowrap;
-}
-
-.hero-title-subbrand {
-  font-size: smaller;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  font-family:
-    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .hero-links {
