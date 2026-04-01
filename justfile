@@ -204,3 +204,9 @@ deploy:
     uv run ./manage.py migrate
     uv run ./manage.py collectstatic --no-input --clear
     supervisorctl restart albahaca
+
+# Sync media files to production server
+[group('production')]
+sync-media:
+    #!/usr/bin/env bash
+    rsync -av --delete --exclude='*.pyc' --exclude='__pycache__' ./media/ pizzerialaalbahaca.es:~/code/albahaca/media/

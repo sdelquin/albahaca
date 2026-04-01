@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # THIRD PARTY
     'django_browser_reload',
+    'adminsortable2',
     # CUSTOM
     'shared.apps.SharedConfig',
     'homepage.apps.HomepageConfig',
+    'menu.apps.MenuConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +128,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [BASE_DIR / 'node_modules']
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 ADMIN_URL = config('ADMIN_URL', default='admin/')
 

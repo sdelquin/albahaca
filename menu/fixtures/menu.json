@@ -1,0 +1,728 @@
+[
+{
+  "model": "menu.item",
+  "pk": 1,
+  "fields": {
+    "name": "Pan con ajo",
+    "description": "",
+    "price": "3.95",
+    "active": true,
+    "category": 1,
+    "order": 2
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 2,
+  "fields": {
+    "name": "Berenjenas asadas y pimientos asados",
+    "description": "",
+    "price": "8.50",
+    "active": true,
+    "category": 1,
+    "order": 4
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 3,
+  "fields": {
+    "name": "Tabla de serrano y queso semicurado",
+    "description": "",
+    "price": "8.95",
+    "active": true,
+    "category": 1,
+    "order": 6
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 4,
+  "fields": {
+    "name": "Tapa de tomates secos",
+    "description": "",
+    "price": "6.95",
+    "active": true,
+    "category": 1,
+    "order": 8
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 5,
+  "fields": {
+    "name": "Tapa de setas",
+    "description": "Volvalliera volvacea",
+    "price": "8.95",
+    "active": true,
+    "category": 1,
+    "order": 10
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 6,
+  "fields": {
+    "name": "Parmesana de berenjenas",
+    "description": "Berenjenas asadas, mozzarella, tomate y queso parmesano",
+    "price": "10.95",
+    "active": true,
+    "category": 1,
+    "order": 12
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 7,
+  "fields": {
+    "name": "Lasaña de carne",
+    "description": "Pasta fresca de elaboración propia, boloñesa casera de res, queso y bechamel",
+    "price": "13.95",
+    "active": true,
+    "category": 1,
+    "order": 14
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 8,
+  "fields": {
+    "name": "Antipastos",
+    "description": "Variado de berenjenas asadas, pimientos asados, jamón serrano, queso semicurado, setas, tomates secos y cebolla caramelizada",
+    "price": "20.95",
+    "active": true,
+    "category": 1,
+    "order": 16
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 9,
+  "fields": {
+    "name": "Burrata",
+    "description": "Burrata rellena de pesto sobre cama de tomates cherry asados , albahaca y ajo",
+    "price": "11.50",
+    "active": true,
+    "category": 1,
+    "order": 18
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 10,
+  "fields": {
+    "name": "Ensalada de pollo templado",
+    "description": "Pechuga de pollo en tiras sobre cama de rúcula, pimientos asados, tomate fresco y vinagreta agridulce de nueces",
+    "price": "12.50",
+    "active": true,
+    "category": 1,
+    "order": 20
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 11,
+  "fields": {
+    "name": "Ensalada crujiente de atún",
+    "description": "Atún, almendras, tomate seco, rúcula, berenjenas asadas y vinagreta de miel",
+    "price": "12.50",
+    "active": true,
+    "category": 1,
+    "order": 22
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 12,
+  "fields": {
+    "name": "Margarita",
+    "description": "Queso, orégano y  aceite de ajo",
+    "price": "8.50",
+    "active": true,
+    "category": 2,
+    "order": 1
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 13,
+  "fields": {
+    "name": "Margarita especial",
+    "description": "Mozzarella fior di latte , parmesano y albahaca",
+    "price": "9.95",
+    "active": true,
+    "category": 2,
+    "order": 3
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 14,
+  "fields": {
+    "name": "Prosciutto",
+    "description": "Jamón",
+    "price": "9.50",
+    "active": true,
+    "category": 2,
+    "order": 5
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 15,
+  "fields": {
+    "name": "Popolare",
+    "description": "Jamón y atún",
+    "price": "10.50",
+    "active": true,
+    "category": 2,
+    "order": 7
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 16,
+  "fields": {
+    "name": "Funghi",
+    "description": "Jamón y champiñones",
+    "price": "10.50",
+    "active": true,
+    "category": 2,
+    "order": 9
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 17,
+  "fields": {
+    "name": "Tropical",
+    "description": "Jamón, piña y maíz",
+    "price": "10.95",
+    "active": true,
+    "category": 2,
+    "order": 11
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 18,
+  "fields": {
+    "name": "Milano",
+    "description": "Alcachofas, brotes de ajo, champiñones y cebolla",
+    "price": "11.50",
+    "active": true,
+    "category": 2,
+    "order": 13
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 19,
+  "fields": {
+    "name": "Cuatro estaciones",
+    "description": "Atún, cebolla, champiñones y aceitunas verdes",
+    "price": "11.95",
+    "active": true,
+    "category": 2,
+    "order": 15
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 20,
+  "fields": {
+    "name": "Pinocho",
+    "description": "Atún, cebolla y anchoas",
+    "price": "12.50",
+    "active": true,
+    "category": 2,
+    "order": 17
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 21,
+  "fields": {
+    "name": "Italina",
+    "description": "Salami, cebolla y champiñones",
+    "price": "12.50",
+    "active": true,
+    "category": 2,
+    "order": 19
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 22,
+  "fields": {
+    "name": "Pepperhoney",
+    "description": "Pepperoni picante y miel",
+    "price": "11.50",
+    "active": true,
+    "category": 2,
+    "order": 21
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 23,
+  "fields": {
+    "name": "5 quesos",
+    "description": "Mozzarella, edam, semicurado, azul y parmesano",
+    "price": "11.95",
+    "active": true,
+    "category": 2,
+    "order": 23
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 24,
+  "fields": {
+    "name": "Venecia",
+    "description": "Berenjenas, champiñones, cebolla, pimiento y brotes de ajo",
+    "price": "12.50",
+    "active": true,
+    "category": 2,
+    "order": 24
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 25,
+  "fields": {
+    "name": "Vegetariana",
+    "description": "Berenjenas asadas, champiñones y brotes de ajo",
+    "price": "11.50",
+    "active": true,
+    "category": 2,
+    "order": 25
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 26,
+  "fields": {
+    "name": "Lucas",
+    "description": "Queso blanco, cebolla caramelizada, tomate seco y albahaca",
+    "price": "13.50",
+    "active": true,
+    "category": 2,
+    "order": 26
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 27,
+  "fields": {
+    "name": "Romana",
+    "description": "Sobrasada de ibérico, berenjenas asadas, maiz tostado, parmesano y miel.",
+    "price": "12.95",
+    "active": true,
+    "category": 2,
+    "order": 27
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 28,
+  "fields": {
+    "name": "Capri",
+    "description": "Berenjenas asadas, tomate fresco y albahaca",
+    "price": "11.50",
+    "active": true,
+    "category": 2,
+    "order": 28
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 29,
+  "fields": {
+    "name": "Serrana",
+    "description": "Jamón serrano, tomate fresco y albahaca",
+    "price": "12.95",
+    "active": true,
+    "category": 2,
+    "order": 29
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 30,
+  "fields": {
+    "name": "Setas",
+    "description": "Setas, tomate fresco, parmesano y albahaca",
+    "price": "13.95",
+    "active": true,
+    "category": 2,
+    "order": 30
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 31,
+  "fields": {
+    "name": "Siciliana",
+    "description": "Pepperoni picante, champiñones, rúcula y parmesano",
+    "price": "12.95",
+    "active": true,
+    "category": 2,
+    "order": 31
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 32,
+  "fields": {
+    "name": "Rucola",
+    "description": "Rúcula, tomate fresco y parmesano",
+    "price": "12.50",
+    "active": true,
+    "category": 2,
+    "order": 32
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 33,
+  "fields": {
+    "name": "Fiorella",
+    "description": "Berenjenas asadas, jamón, rúcula, pimientos asados y parmesano",
+    "price": "13.50",
+    "active": true,
+    "category": 2,
+    "order": 33
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 34,
+  "fields": {
+    "name": "Melanzane",
+    "description": "Berenjenas, pimientos asados, cebolla, parmesano y albahaca",
+    "price": "13.50",
+    "active": true,
+    "category": 2,
+    "order": 34
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 35,
+  "fields": {
+    "name": "La Albahaca",
+    "description": "Jamón serrano, parmesano, tomate fresco, pimientos asados y albahaca",
+    "price": "13.95",
+    "active": true,
+    "category": 2,
+    "order": 35
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 36,
+  "fields": {
+    "name": "Pizza al gusto",
+    "description": "Pizza margarita + cada ingrediente 1€\r\nExcepto anchoas, atún, cebolla caramelizada, queso blanco, \r\npepperoni picante, tomate seco, pimiento asado y berenjenas 2€\r\nParmesano, jamón serrano y setas 2.5€",
+    "price": null,
+    "active": true,
+    "category": 2,
+    "order": 36
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 37,
+  "fields": {
+    "name": "Pizza infantil",
+    "description": "-20% del precio original",
+    "price": null,
+    "active": true,
+    "category": 2,
+    "order": 37
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 38,
+  "fields": {
+    "name": "1906",
+    "description": "Reserva especial y negra",
+    "price": "2.80",
+    "active": true,
+    "category": 3,
+    "order": 1
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 39,
+  "fields": {
+    "name": "Dorada",
+    "description": "Especial, Pilsen, limón y tostada",
+    "price": "2.00",
+    "active": true,
+    "category": 3,
+    "order": 2
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 40,
+  "fields": {
+    "name": "Franciscana 0.5L",
+    "description": "Turbia y tostada",
+    "price": "3.00",
+    "active": true,
+    "category": 3,
+    "order": 3
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 41,
+  "fields": {
+    "name": "Tiramisú",
+    "description": "",
+    "price": "5.50",
+    "active": true,
+    "category": 4,
+    "order": 1
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 42,
+  "fields": {
+    "name": "Tarta de queso vasca",
+    "description": "",
+    "price": "5.95",
+    "active": true,
+    "category": 4,
+    "order": 2
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 43,
+  "fields": {
+    "name": "Tarta de zanahoria",
+    "description": "",
+    "price": "5.50",
+    "active": true,
+    "category": 4,
+    "order": 3
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 44,
+  "fields": {
+    "name": "Marba",
+    "description": "Tinto tradicional D.O.P. Islas Canarias",
+    "price": "18.00",
+    "active": true,
+    "category": 5,
+    "order": 1
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 45,
+  "fields": {
+    "name": "Canta Perdices",
+    "description": "Tinto D.O. Ribera del Duero",
+    "price": "18.00",
+    "active": true,
+    "category": 5,
+    "order": 2
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 46,
+  "fields": {
+    "name": "Ramón Bilbao \"Edición Limitada\"",
+    "description": "Tinto D.O.Ca Rioja",
+    "price": "25.00",
+    "active": true,
+    "category": 5,
+    "order": 3
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 47,
+  "fields": {
+    "name": "Viernes de Godella",
+    "description": "Tinto D.O. Bierzo",
+    "price": "17.00",
+    "active": true,
+    "category": 5,
+    "order": 4
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 48,
+  "fields": {
+    "name": "Marba Tinto Barrica",
+    "description": "Tinto tradicional D.O.P. Islas Canarias",
+    "price": "22.00",
+    "active": true,
+    "category": 5,
+    "order": 5
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 49,
+  "fields": {
+    "name": "Ostatu",
+    "description": "Blanco seco D.O.Ca Rioja",
+    "price": "18.00",
+    "active": true,
+    "category": 5,
+    "order": 6
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 50,
+  "fields": {
+    "name": "Marba Blanco Seco",
+    "description": "Blanco seco D.O.P. islas Canarias",
+    "price": "18.00",
+    "active": true,
+    "category": 5,
+    "order": 7
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 51,
+  "fields": {
+    "name": "Tajinaste blanco afrutado",
+    "description": "Blanco afrutado D.O.P. Islas Canarias",
+    "price": "18.00",
+    "active": true,
+    "category": 5,
+    "order": 8
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 52,
+  "fields": {
+    "name": "Lambrusco",
+    "description": "Espumoso rosado",
+    "price": "8.00",
+    "active": true,
+    "category": 5,
+    "order": 9
+  }
+},
+{
+  "model": "menu.item",
+  "pk": 53,
+  "fields": {
+    "name": "Bodegas 35",
+    "description": "Tinto, blanco seco y afrutado (1/2)",
+    "price": "7.00",
+    "active": true,
+    "category": 5,
+    "order": 10
+  }
+},
+{
+  "model": "menu.subitem",
+  "pk": 1,
+  "fields": {
+    "details": "Mediano",
+    "price": "15.95",
+    "item": 8,
+    "order": 0
+  }
+},
+{
+  "model": "menu.subitem",
+  "pk": 2,
+  "fields": {
+    "details": "Copa",
+    "price": "3.50",
+    "item": 44,
+    "order": 1
+  }
+},
+{
+  "model": "menu.subitem",
+  "pk": 3,
+  "fields": {
+    "details": "Copa",
+    "price": "3.50",
+    "item": 49,
+    "order": 1
+  }
+},
+{
+  "model": "menu.subitem",
+  "pk": 4,
+  "fields": {
+    "details": "1/4",
+    "price": "3.50",
+    "item": 53,
+    "order": 1
+  }
+},
+{
+  "model": "menu.category",
+  "pk": 1,
+  "fields": {
+    "name": "Para picar",
+    "description": "Pan de masa madre incluido en entrantes",
+    "order": 1,
+    "cover": "categories/covers/para-picar_web.jpg"
+  }
+},
+{
+  "model": "menu.category",
+  "pk": 2,
+  "fields": {
+    "name": "Pizzas",
+    "description": "Las pizzas llevan tomate, queso, orégano y aceite de ajo",
+    "order": 2,
+    "cover": "categories/covers/pizzas_web.jpg"
+  }
+},
+{
+  "model": "menu.category",
+  "pk": 3,
+  "fields": {
+    "name": "Cervezas",
+    "description": "",
+    "order": 5,
+    "cover": "categories/covers/cervezas_web.jpg"
+  }
+},
+{
+  "model": "menu.category",
+  "pk": 4,
+  "fields": {
+    "name": "Postres",
+    "description": "",
+    "order": 3,
+    "cover": "categories/covers/postres_web.jpg"
+  }
+},
+{
+  "model": "menu.category",
+  "pk": 5,
+  "fields": {
+    "name": "Vinos",
+    "description": "",
+    "order": 4,
+    "cover": "categories/covers/vinos_web.jpg"
+  }
+}
+]

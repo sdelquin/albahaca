@@ -1,0 +1,57 @@
+{% extends "menu/base.html" %}
+{% load extras %}
+  
+{% block content %}
+  <h1 class="title is-1">
+    Carta
+  </h1>
+
+  <div class="content">
+    <blockquote>
+      «Porque comer es un placer»
+    </blockquote>
+    <p>
+      Disfruta en <strong>La Albahaca</strong> de pizzas muy ligeras y crujientes, elaboradas con harina canaria, agua mineral natural y aceite de oliva.  Junto a los entrantes encontrarás nuestro pan de semillas de elaboración propia con una fermentación mínima de 24 horas y masa madre. Utilizamos productos frescos, verduras y hierbas de productores locales.
+    </p>
+  </div>
+
+  {% for category in categories %}
+    <section class="hero category"
+      style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ category.cover.url }}');"
+    >
+      <div class="hero-body">
+        <p class="title">{{ category.name }}</p>
+        <p class="subtitle">{{ category.description }}</p>
+      </div>
+    </section>
+
+      <table class="table is-fullwidth is-striped mt-5">
+        <tbody>
+          {% for item in category.items.all %}
+            <tr>
+              <td>
+                <p><strong>{{ item.name }}</strong></p>
+                <p class="is-size-7"><em>{{ item.description|linebreaksbr }}</em></p>
+              </td>
+              <td class="has-text-right">
+                {{ item.price_display }}
+              </td>
+            </tr>
+            {% for subitem in item.subitems.all %}
+              <tr>
+                <td>
+                  <p class="pl-4">
+                    <i class="fa-solid fa-angle-right"></i>
+                    <strong>{{ subitem.name }}</strong>
+                  </p>
+                </td>
+                <td class="has-text-right">
+                  {{ subitem.price_display }}
+                </td>
+              </tr>
+            {% endfor %}
+          {% endfor %}
+        </tbody>
+      </table>
+  {% endfor %}
+{% endblock %}

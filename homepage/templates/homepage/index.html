@@ -6,7 +6,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% hashed_static 'css/fonts.css' %}" />
     <link rel="stylesheet" href="{% hashed_static 'homepage/css/styles.css' %}" />
     <link rel="stylesheet" href="{% hashed_static 'homepage/css/styles-mobile.css' %}" />
     <title>Pizzería La Albahaca</title>
@@ -18,7 +17,7 @@
         <img src="{% hashed_static 'img/logo-laalbahaca.svg' %}" alt="Logo de La Albahaca" class="hero-logo" />
       </div>
       <div class="hero-links">
-        <a href="javascript:alert('Próximamente')">Carta</a>
+        <a href="{% url 'menu:index' %}">Carta</a>
         <a href="javascript:alert('Próximamente')">Galería</a>
         <a href="javascript:alert('Próximamente')">Reservas</a>
         <a href="javascript:alert('Próximamente')">Contacto</a>

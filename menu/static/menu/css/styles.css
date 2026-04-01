@@ -1,0 +1,10 @@
+section.category {
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  section.category {
+    background-position: center left;
+  }
+}

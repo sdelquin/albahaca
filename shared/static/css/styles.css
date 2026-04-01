@@ -1,0 +1,10 @@
+.navbar-item img {
+  max-height: none;
+  height: 75px;
+}
+
+.navbar-item.is-active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-weight: bold;
+}
