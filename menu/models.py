@@ -1,6 +1,11 @@
 from django.db import models
 
 
+class ActiveManager(models.Manager):
+    def active(self):
+        return self.filter(active=True)
+
+
 class Item(models.Model):
     name = models.CharField(max_length=256)
     description = models.TextField(blank=True)
@@ -18,6 +23,9 @@ class Item(models.Model):
     @property
     def price_display(self) -> str:
         return f'{self.price:.2f}€' if self.price is not None else '-'
+
+    # Managers
+    objects = ActiveManager()
 
 
 class SubItem(models.Model):

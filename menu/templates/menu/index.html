@@ -27,7 +27,7 @@
 
       <table class="table is-fullwidth is-striped mt-5">
         <tbody>
-          {% for item in category.items.all %}
+          {% for item in category.items.active %}
             <tr>
               <td>
                 <p><strong>{{ item.name }}</strong></p>
