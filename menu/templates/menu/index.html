@@ -1,5 +1,9 @@
 {% extends "menu/base.html" %}
 {% load extras %}
+
+{% block title %}
+  {% include 'includes/title.html' with section='Carta' %}
+{% endblock %}
   
 {% block content %}
   <h1 class="title is-1">

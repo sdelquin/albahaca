@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="{% hashed_static 'css/styles.css' %}" />
     {% block extra_css %}
     {% endblock %}
-    <title>Pizzería La Albahaca</title>
+    {% block title %}
+      {% include 'includes/title.html' %} 
+    {% endblock %}
   </head>
   <body>
     {% include 'includes/navbar.html' %}

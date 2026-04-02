@@ -5,4 +5,5 @@ from .models import Category
 
 def index(request):
     categories = Category.objects.all()
-    return render(request, 'menu/index.html', {'categories': categories})
+    context = {'categories': categories}
+    return render(request, 'menu/index.html', context)
