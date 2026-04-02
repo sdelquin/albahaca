@@ -8,3 +8,11 @@
   color: white;
   font-weight: bold;
 }
+
+#toTop {
+  position: fixed;
+  font-size: 40px;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
