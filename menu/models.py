@@ -52,6 +52,7 @@ class SubItem(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=256)
+    slug = models.SlugField(max_length=256, unique=True)
     description = models.TextField(blank=True)
     order = models.PositiveSmallIntegerField(default=0)
     cover = models.ImageField(upload_to='categories/covers/', blank=True, null=True)

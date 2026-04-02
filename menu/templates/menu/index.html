@@ -15,8 +15,20 @@
     </p>
   </div>
 
+  <div class="buttons has-addons">
+    {% for category in categories %}
+      {% if not forloop.first %}
+        <a class="button" href="#{{ category.slug }}">
+          {{ category.name }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
   {% for category in categories %}
-    <section class="hero category"
+    <section
+      class="hero category"
+      id="{{ category.slug }}"
       style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ category.cover.url }}');"
     >
       <div class="hero-body">
