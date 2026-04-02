@@ -1,0 +1,8 @@
+{% load extras %}
+
+<meta property="og:site_name" content="Pizzería La Albahaca" />
+<meta property="og:title" content="{{ section }}" />
+<meta property="og:description" content="Estamos que crujimos" />
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% hashed_static 'img/logo-laalbahaca.jpg' %}" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+

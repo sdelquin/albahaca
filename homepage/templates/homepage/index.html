@@ -6,8 +6,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% include 'includes/og.html' %}
+    <link rel="icon" type="image/png" href="{% hashed_static 'img/favicon.png' %}" />
+
     <link rel="stylesheet" href="{% hashed_static 'homepage/css/styles.css' %}" />
     <link rel="stylesheet" href="{% hashed_static 'homepage/css/styles-mobile.css' %}" />
+
     <title>Pizzería La Albahaca</title>
   </head>
   <body>

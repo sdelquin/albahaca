@@ -6,15 +6,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% include 'includes/og.html' %}
+    <link rel="icon" type="image/png" href="{% hashed_static 'img/favicon.png' %}" />
+
     <link rel="stylesheet" href="{% hashed_static 'bulma/css/bulma.min.css' %}" />
     <link rel="stylesheet" href="{% hashed_static '@fortawesome/fontawesome-free/css/all.min.css' %}" />
     <link rel="stylesheet" href="{% hashed_static 'css/fonts.css' %}" />
     <link rel="stylesheet" href="{% hashed_static 'css/styles.css' %}" />
+
     {% block extra_css %}
     {% endblock %}
-    {% block title %}
-      {% include 'includes/title.html' %} 
-    {% endblock %}
+
+    <title>
+      {% if section %} {{ section }} | {% endif %}
+      Pizzería La Albahaca
+    </title>
   </head>
   <body>
     {% include 'includes/navbar.html' %}
