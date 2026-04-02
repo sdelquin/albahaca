@@ -205,8 +205,20 @@ deploy:
     uv run ./manage.py collectstatic --no-input --clear
     supervisorctl restart albahaca
 
-# Sync media files to production server
+# Sync media files from production server
 [group('production')]
 sync-media:
     #!/usr/bin/env bash
-    rsync -av --delete --exclude='*.pyc' --exclude='__pycache__' ./media/ pizzerialaalbahaca.es:~/code/albahaca/media/
+    rsync -av --delete --exclude='*.pyc' --exclude='__pycache__' pizzerialaalbahaca.es:~/code/albahaca/media/ ./media/
+
+# Sync database from production server
+[group('production')]
+sync-db:
+    #!/usr/bin/env bash
+    scp pizzerialaalbahaca.es:~/code/albahaca/db.sqlite3 ./
+
+# Sync media files and database from production server, then updates superuser
+[group('production')]
+@sync: sync-media sync-db
+    just create-su admin admin admin@example.com
+    echo "✔ Media and database synced from production server"
