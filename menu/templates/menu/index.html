@@ -52,9 +52,9 @@
             {% for subitem in item.subitems.all %}
               <tr>
                 <td>
-                  <p class="pl-4">
-                    <i class="fa-solid fa-angle-right"></i>
-                    <strong>{{ subitem.name }}</strong>
+                  <p>
+                    <p class="ml-5"><strong>{{ subitem.item }}</strong></p>
+                    <p class="ml-5 is-size-7"><em>{{ subitem.details|linebreaksbr }}</em></p>
                   </p>
                 </td>
                 <td class="has-text-right">
