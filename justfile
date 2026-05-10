@@ -7,7 +7,16 @@ dev port="8000":
 [group('server')]
 dev0 port="8000":
     #!/usr/bin/env bash
-    uv run manage.py runserver 0.0.0.0:{{ port }}
+    if [ "{{ os() }}" = "macos" ]; then
+        IP=$(ipconfig getifaddr "$(route get default | awk '/interface: / {print $2}')")
+    else
+        IP=$(ip route get 1 | awk '{print $7; exit}')
+    fi
+    if grep -Eq "ALLOWED_HOSTS.*$IP" main/settings.py .env 2>/dev/null; then
+        uv run ./manage.py runserver 0.0.0.0:{{ port }}
+    else
+        echo "Add \"$IP\" to ALLOWED_HOSTS in main/settings.py or .env"
+    fi
 
 alias c:=check
 # Check Django project
