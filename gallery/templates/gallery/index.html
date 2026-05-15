@@ -1,0 +1,42 @@
+{% extends 'gallery/base.html' %}
+{% load thumbnail %}
+
+{% block title %}
+  {% include 'includes/title.html' with section='Galería' %}
+{% endblock %}
+
+{% block content %}
+  <h1 class="title is-1">
+    Galería
+  </h1>
+
+  <p>Descubre nuestro restaurante a través de la galería de imágenes:</p>
+
+  <div class="glide mt-5">
+    <div class="glide__track" data-glide-el="track">
+      <ul class="glide__slides">
+        {% for image in images %}
+        <li class="glide__slide depth-card">
+          <div class="depth-card">
+            {% thumbnail image.image_file "300x400" crop="center" as im %}
+              <img src="{{ im.url }}" alt="{{ im.caption }}" loading="lazy">
+            {% endthumbnail %}
+          </div>
+          <h4 class="has-text-centered has-text-weight-semibold">
+            {{ image.caption }}
+          </h4>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div data-glide-el="controls">
+        <button class="gallery-arrow gallery-arrow-left" data-glide-dir="<">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button class="gallery-arrow gallery-arrow-right" data-glide-dir=">">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+    </div>
+  </div>
+{% endblock %}

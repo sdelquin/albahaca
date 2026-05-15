@@ -14,7 +14,6 @@ class ItemAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('order', 'name', 'price', 'active', 'category')
     list_filter = ('active', 'category')
     search_fields = ('name', 'description')
-    # ordering = ('order',)
     inlines = [SubItemInline]
 
 
@@ -22,7 +21,6 @@ class ItemAdmin(SortableAdminMixin, admin.ModelAdmin):
 class SubItemAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('order', 'details', 'price', 'item')
     search_fields = ('details',)
-    # ordering = ('order',)
 
 
 class ItemInline(SortableInlineAdminMixin, admin.TabularInline):
@@ -34,5 +32,4 @@ class ItemInline(SortableInlineAdminMixin, admin.TabularInline):
 class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('order', 'name', 'description')
     search_fields = ('name', 'description')
-    # ordering = ('order',)
     inlines = [ItemInline]

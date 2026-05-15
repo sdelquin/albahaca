@@ -43,10 +43,12 @@ INSTALLED_APPS = [
     # THIRD PARTY
     'django_browser_reload',
     'adminsortable2',
+    'sorl.thumbnail',
     # CUSTOM
     'shared.apps.SharedConfig',
     'homepage.apps.HomepageConfig',
     'menu.apps.MenuConfig',
+    'gallery.apps.GalleryConfig',
 ]
 
 MIDDLEWARE = [

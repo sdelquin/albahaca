@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="{% hashed_static 'bulma/css/bulma.min.css' %}" />
     <link rel="stylesheet" href="{% hashed_static '@fortawesome/fontawesome-free/css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% hashed_static '@glidejs/glide/dist/css/glide.core.min.css' %}" />
     <link rel="stylesheet" href="{% hashed_static 'css/fonts.css' %}" />
     <link rel="stylesheet" href="{% hashed_static 'css/styles.css' %}" />
 
@@ -34,7 +35,9 @@
 
     <button id="toTop"><i class="fa-solid fa-circle-arrow-up"></i></button>
   
+    <script src="{% hashed_static '@glidejs/glide/dist/glide.min.js' %}"></script>
     <script src="{% hashed_static 'js/main.js' %}"></script>
+
     {% block extra_js %}
     {% endblock %}
   </body>

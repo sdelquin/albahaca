@@ -11,6 +11,7 @@ dependencies = [
     { name = "django-admin-sortable2" },
     { name = "pillow" },
     { name = "prettyconf" },
+    { name = "sorl-thumbnail" },
 ]
 
 [package.dev-dependencies]
@@ -27,6 +28,7 @@ requires-dist = [
     { name = "django-admin-sortable2", specifier = ">=2.3.1" },
     { name = "pillow", specifier = ">=12.1.1" },
     { name = "prettyconf", specifier = ">=2.3.0" },
+    { name = "sorl-thumbnail", specifier = ">=13.0.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -142,6 +144,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/01/09/4610455726515805d034eaee4e663481a4e60db42007cfd373f0b09595a1/prettyconf-2.3.0.tar.gz", hash = "sha256:d73e025b25ffb188227c88f15755a7e6bfe57203700a9b6f45146b7d6bc55c67", size = 13540, upload-time = "2025-03-25T19:46:00.504Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/88/2b/c5006566fd2482285f069ee508eb2a872cd0bfb2d41e3fa011c05bb7ff37/prettyconf-2.3.0-py3-none-any.whl", hash = "sha256:9c83eb90472522b0f2bc196f7d561ff8c26a1833f838cc32f948ea4d3973cb64", size = 9907, upload-time = "2025-03-25T19:45:59.078Z" },
+]
+
+[[package]]
+name = "sorl-thumbnail"
+version = "13.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c4/d8/038201e8fc4bda7f7905c41155af70fc0d15f94f90baac52f04ea66ad3af/sorl_thumbnail-13.0.0.tar.gz", hash = "sha256:75f1f22fa742846917ca4774cd4c578cd802ff5e4f6f53328735c3a38264ee49", size = 668977, upload-time = "2026-01-22T15:20:51.624Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ea/8b/04d8eaaffbdfc17792b008d7bdf0b379e6bb2648ce262e96c95f76f4ba7c/sorl_thumbnail-13.0.0-py3-none-any.whl", hash = "sha256:8035d218b2b90511326c9a73dbf6e8a829f9ea808e448e98332190a0e2c0ee18", size = 43136, upload-time = "2026-01-22T15:20:37.103Z" },
 ]
 
 [[package]]

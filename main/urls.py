@@ -26,4 +26,5 @@ urlpatterns = [
     path(f'{settings.ADMIN_URL}', admin.site.urls),
     path('', lambda r: render(r, 'homepage/index.html')),
     path('carta/', include('menu.urls')),
+    path('galeria/', include('gallery.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
