@@ -171,3 +171,5 @@ if not DEBUG:
             },
         },
     }
+
+THUMBNAILS_SIZE = config('THUMBNAILS_SIZE', default='700x800')

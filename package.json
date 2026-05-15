@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",
-    "@glidejs/glide": "^3.7.1",
     "bulma": "^1.0.4"
   }
 }
