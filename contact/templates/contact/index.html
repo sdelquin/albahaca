@@ -9,65 +9,76 @@
   <div class="columns">
     <!-- Primera columna -->
     <div class="column is-4">
-      <h3 class="subtitle is-size-4">
-        <i class="fa-solid fa-location-dot"></i>
-        Dirección
-      </h3>
-      <p>
-        {{ info.street }}<br>
-        {{ info.city }}, {{ info.state }} {{ info.zip_code }}<br>
-        {{ info.country }}
-         <a href="{{ info.google_maps_url }}" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-      </p>
+      <article class="panel">
+        <p class="panel-heading is-size-6 has-background-dark">
+          <i class="fa-solid fa-location-dot"></i>
+          Dirección
+        </p>
+        <div class="panel-block">
+          {% include "contact/includes/address.html" %}
+        </div>
+      </article>
 
-      <h3 class="subtitle is-size-4 mt-5">
-        <i class="fa-solid fa-phone"></i>
-        Comunicación
-      </h3>
-      <p>
-        <a href="mailto:{{ info.email }}">{{ info.email }}</a>
-        <br>
-        {{ info.phone }}
-      </p>
+      <article class="panel">
+        <p class="panel-heading is-size-6 has-background-dark">
+          <i class="fa-solid fa-clock"></i>
+          Horario
+        </p>
+        <div class="panel-block">
+          {{ info.timetable|linebreaks }}
+        </div>
+      </article>
 
-      <h3 class="subtitle is-size-4 mt-5">
-        <i class="fa-solid fa-clock"></i>
-        Horario
-      </h3>
-      <p>
-        {{ info.timetable|linebreaks }}
-      </p>
+      <article class="panel">
+        <p class="panel-heading is-size-6 has-background-dark">
+          <i class="fa-solid fa-phone"></i>
+          Comunicación
+        </p>
+        <div class="panel-block">
+          <p>
+            <a href="mailto:{{ info.email }}">{{ info.email }}</a>
+            <br>
+            {{ info.phone }}
+          </p>
+        </div>
+      </article>
 
-      <h3 class="subtitle is-size-4 mt-5">
-        <i class="fa-solid fa-users"></i>
-        Redes Sociales
-      </h3>
-      {% social_links %}
+      <article class="panel">
+        <p class="panel-heading is-size-6 has-background-dark">
+          <i class="fa-solid fa-users"></i>
+          Redes Sociales
+        </p>
+        <div class="panel-block">
+          <p>
+            {% social_links %}
+          </p>
+        </div>
+      </article>
 
-      <h3 class="subtitle is-size-4 mt-5">
-        <i class="fa-solid fa-star"></i>
-        Reseñas
-      </h3>
-      <p>
-        Nos gustaría conocer tu opinión sobre nuestro restaurante. Puedes dejarnos una reseña <a href="{{ info.google_reviews_url }}" target="_blank">aquí</a>. ¡Gracias por tu apoyo!
-      </p>
+      <article class="panel">
+        <p class="panel-heading is-size-6 has-background-dark">
+          <i class="fa-solid fa-star"></i>
+          Reseñas
+        </p>
+        <div class="panel-block">
+          <p>
+            Nos gustaría conocer tu opinión sobre nuestro restaurante. Puedes dejarnos una reseña <a href="{{ info.google_reviews_url }}" target="_blank">aquí</a>. ¡Gracias por tu apoyo!
+          </p>
+        </div>
+      </article>
     </div>
 
     <!-- Segunda columna -->
     <div class="column is-8">
-      <h3 class="subtitle is-size-4">
-        <i class="fa-solid fa-map"></i>
-        Mapa
-      </h3>
-      <iframe
-          src="{{ info.google_maps_embed_url }}"
-          width="100%",
-          height="450",
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      <article class="panel">
+        <p class="panel-heading is-size-6 has-background-dark">
+          <i class="fa-solid fa-map"></i>
+          Mapa
+        </p>
+        <div class="panel-block flex">
+          {% include "contact/includes/map.html" %}
+        </div>
+      </article>
     </div>
   </div>
 {% endblock %}
