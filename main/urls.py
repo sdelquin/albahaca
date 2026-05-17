@@ -27,4 +27,5 @@ urlpatterns = [
     path('', lambda r: render(r, 'homepage/index.html')),
     path('carta/', include('menu.urls')),
     path('galeria/', include('gallery.urls')),
+    path('contacto/', include('contact.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

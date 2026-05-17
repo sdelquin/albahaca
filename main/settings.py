@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
     'menu.apps.MenuConfig',
     'gallery.apps.GalleryConfig',
+    'contact.apps.ContactConfig',
 ]
 
 MIDDLEWARE = [
