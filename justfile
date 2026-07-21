@@ -233,8 +233,8 @@ sync-db:
     just create-su admin admin admin@example.com
     echo "✔ Media and database synced from production server"
 
-# Build (and watch) Tailwind CSS (for development)
 alias tw:=tailwind-watch
+# Build (and watch) Tailwind CSS (for development)
 [group('static')]
 tailwind-watch:
     #!/usr/bin/env bash
