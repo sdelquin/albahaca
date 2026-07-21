@@ -1,0 +1,16 @@
+@layer base {
+  body {
+    @apply font-sans bg-zinc-900 text-zinc-300 flex flex-col;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+}

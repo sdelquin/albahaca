@@ -1,35 +1,29 @@
-{% extends 'gallery/base.html' %}
+{% extends 'base.html' %}
 {% load thumbnail %}
 
-{% block title %}
-  {% include 'includes/title.html' with section='Galería' %}
-{% endblock %}
-
 {% block content %}
-  <h1 class="title is-size-1">
-    {{ section }}
-  </h1>
+<h1 class="text-5xl">{{ section }}</h1>
 
+<section class="mt-4">
   <p>Descubre nuestro restaurante a través de la galería de imágenes:</p>
+</section>
 
-  <div class="columns is-multiline mt-5">
-    {% for image in images %}
-      <div class="column is-3-desktop is-6-tablet is-12-mobile">
-        <div class="card">
-          <div class="card-image gallery-card">
-            <figure class="image">
-              {% thumbnail image.image_file thumbnail_size crop="center" as im %}
-                <img src="{{ im.url }}" alt="{{ im.caption }}" loading="lazy">
-              {% endthumbnail %}
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content card-caption">
-              {{ image.caption }}
-            </div>
-          </div>
-        </div>
+<section class="mt-7 grid grid-cols-1 sm:grid-cols-4 gap-6">
+  {% for image in images %}
+    <div class="group rounded-2xl bg-zinc-800">
+      <div class="overflow-hidden rounded-t-2xl">
+        {% thumbnail image.image_file thumbnail_size crop="center" as im %}
+          <img
+            src="{{ im.url }}"
+            alt="{{ im.caption }}"
+            loading="lazy"
+            class="transition-transform duration-600 group-hover:scale-125"
+          >
+        {% endthumbnail %}
       </div>
-    {% endfor %}
-  </div>
+      <p class="p-5">{{ image.caption }}</p>
+    </div>
+  {% endfor %}
+</section>
+
 {% endblock %}

@@ -2,83 +2,36 @@
 {% load contact_extras %}
 
 {% block content %}
-  <h1 class="title is-size-1">
-    {{ section }}
-  </h1>
+<h1 class="text-5xl">{{ section }}</h1>
 
-  <div class="columns">
-    <!-- Primera columna -->
-    <div class="column is-4">
-      <article class="panel">
-        <p class="panel-heading is-size-6 has-background-dark">
-          <i class="fa-solid fa-location-dot"></i>
-          Dirección
-        </p>
-        <div class="panel-block">
-          {% include "contact/includes/address.html" %}
-        </div>
-      </article>
-
-      <article class="panel">
-        <p class="panel-heading is-size-6 has-background-dark">
-          <i class="fa-solid fa-clock"></i>
-          Horario
-        </p>
-        <div class="panel-block">
-          {{ info.timetable|linebreaks }}
-        </div>
-      </article>
-
-      <article class="panel">
-        <p class="panel-heading is-size-6 has-background-dark">
-          <i class="fa-solid fa-phone"></i>
-          Comunicación
-        </p>
-        <div class="panel-block">
-          <p>
-            <a href="mailto:{{ info.email }}">{{ info.email }}</a>
-            <br>
-            <a href="tel:{{ info.phone }}">{{ info.phone }}</a>
-          </p>
-        </div>
-      </article>
-
-      <article class="panel">
-        <p class="panel-heading is-size-6 has-background-dark">
-          <i class="fa-solid fa-users"></i>
-          Redes Sociales
-        </p>
-        <div class="panel-block">
-          <p>
-            {% social_links %}
-          </p>
-        </div>
-      </article>
-
-      <article class="panel">
-        <p class="panel-heading is-size-6 has-background-dark">
-          <i class="fa-solid fa-star"></i>
-          Reseñas
-        </p>
-        <div class="panel-block">
-          <p>
-            Nos gustaría conocer tu opinión sobre nuestro restaurante. Puedes dejarnos una reseña <a href="{{ info.google_reviews_url }}" target="_blank">aquí</a>. ¡Gracias por tu apoyo!
-          </p>
-        </div>
-      </article>
-    </div>
-
-    <!-- Segunda columna -->
-    <div class="column is-8">
-      <article class="panel">
-        <p class="panel-heading is-size-6 has-background-dark">
-          <i class="fa-solid fa-map"></i>
-          Mapa
-        </p>
-        <div class="panel-block flex">
-          {% include "contact/includes/map.html" %}
-        </div>
-      </article>
-    </div>
+<section class="mt-5">
+  <h2 class="text-3xl border-b border-zinc-800">Dirección</h2>
+  <div class="mt-4">
+    {% include "contact/includes/map.html" %}
   </div>
+</section>
+
+<section class="mt-5">
+  <h2 class="text-3xl border-b border-zinc-800">Horario</h2>
+  <div class="mt-4">
+    {{ info.timetable|linebreaks }}
+  </div>
+</section>
+
+<section class="mt-5">
+  <h2 class="text-3xl border-b border-zinc-800">Comunicación</h2>
+  <div class="mt-4">
+    <a class="link" href="mailto:{{ info.email }}">{{ info.email }}</a>
+    <br>
+    <a class="link" href="tel:{{ info.phone }}">{{ info.phone }}</a>
+  </div>
+</section>
+
+<section class="mt-5">
+  <h2 class="text-3xl border-b border-zinc-800">Redes sociales</h2>
+  <div class="mt-4">
+    {% social_links %}
+  </div>
+</section>
+
 {% endblock %}

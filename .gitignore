@@ -2,6 +2,7 @@
 *.pyc
 .venv
 .env
+.vscode
 __pycache__
 db.sqlite3
 .artwork
@@ -9,3 +10,4 @@ node_modules
 /media
 /static
 /logs
+/shared/static/css/tailwind.css

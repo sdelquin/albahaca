@@ -1,73 +1,65 @@
-{% extends "menu/base.html" %}
+{% extends "base.html" %}
 {% load extras %}
 
-{% block title %}
-  {% include 'includes/title.html' with section='Carta' %}
-{% endblock %}
-  
 {% block content %}
-  <h1 class="title is-size-1">
-    {{ section }}
-  </h1>
+<h1 class="text-5xl">{{ section }}</h1>
 
-  <div class="content">
-    <blockquote>
-      «Porque comer es un placer»
-    </blockquote>
-    <p>
-      Disfruta en <strong>La Albahaca</strong> de pizzas muy ligeras y crujientes, elaboradas con harina canaria, agua mineral natural y aceite de oliva.  Junto a los entrantes encontrarás nuestro pan de semillas de elaboración propia con una fermentación mínima de 24 horas y masa madre. Utilizamos productos frescos, verduras y hierbas de productores locales.
-    </p>
-  </div>
+<section class="mt-4">
+  Disfruta en <strong>La Albahaca</strong> de pizzas muy ligeras y crujientes, elaboradas con harina canaria, agua mineral natural y aceite de oliva.  Junto a los entrantes encontrarás nuestro pan de semillas de elaboración propia con una fermentación mínima de 24 horas y masa madre. Utilizamos productos frescos, verduras y hierbas de productores locales.
+</section>
 
-  <div class="buttons has-addons">
-    {% for category in categories %}
-      {% if not forloop.first %}
-        <a class="button" href="#{{ category.slug }}">
-          {{ category.name }}
-        </a>
-      {% endif %}
-    {% endfor %}
-  </div>
-
+<!-- NAVEGADOR DE CATEGORÍAS -->
+<section class="mt-4 flex overflow-x-auto">
   {% for category in categories %}
-    <section
-      class="hero category"
-      id="{{ category.slug }}"
-      style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ category.cover.url }}');"
+    <a
+       href="#{{ category.slug }}"
+       class="text-center text-zinc-400 w-32 py-1 border-b border-zinc-700 hover:border-brand hover:text-zinc-300"
     >
-      <div class="hero-body">
-        <p class="title">{{ category.name }}</p>
-        <p class="subtitle">{{ category.description }}</p>
-      </div>
-    </section>
-
-      <table class="table is-fullwidth is-striped mt-5">
-        <tbody>
-          {% for item in category.items.active %}
-            <tr>
-              <td>
-                <p><strong>{{ item.name }}</strong></p>
-                <p class="is-size-7"><em>{{ item.description|linebreaksbr }}</em></p>
-              </td>
-              <td class="has-text-right">
-                {{ item.price_display }}
-              </td>
-            </tr>
-            {% for subitem in item.subitems.all %}
-              <tr>
-                <td>
-                  <p>
-                    <p class="ml-5"><strong>{{ subitem.item }}</strong></p>
-                    <p class="ml-5 is-size-7"><em>{{ subitem.details|linebreaksbr }}</em></p>
-                  </p>
-                </td>
-                <td class="has-text-right">
-                  {{ subitem.price_display }}
-                </td>
-              </tr>
-            {% endfor %}
-          {% endfor %}
-        </tbody>
-      </table>
+      {{ category.name }}
+    </a>
   {% endfor %}
+</section>
+
+<section class="mt-10">
+  <!-- CATEGORÍAS -->
+  {% for category in categories %}
+    <div
+      id="{{ category.slug }}"
+      class="min-h-40 flex items-center bg-cover bg-center bg-black/50 bg-blend-overlay my-3"
+      style="background-image: url('{{ category.cover.url }}');"
+    >
+      <div class="pl-4">
+        <h1 class="text-4xl font-bold">{{ category.name }}</h1>
+        <h2 class="text-xl italic opacity-75">{{ category.description }}</h2>
+      </div>
+    </div>
+
+    <!-- ELEMENTOS DE MENÚ -->
+    {% for item in category.items.active %}
+      <div class="py-2 flex items-center justify-between">
+        <div>
+          <p class="font-bold">{{ item.name }}</p>
+          <p class="font-light text-zinc-500 text-sm">{{ item.description|linebreaksbr }}</p>
+        </div>
+        <div>
+          <p>{{ item.price_display }}</p>
+        </div>
+      </div>
+
+      <!-- SUBELEMENTOS DE MENÚ -->
+      {% for subitem in item.subitems.all %}
+        <div class="ml-5 py-2 pl-2 flex items-center justify-between border-l-3 border-zinc-500/30">
+          <div>
+            <p>{{ subitem.item }}</p>
+            <p class="font-light text-zinc-500 text-sm">{{ subitem.details|linebreaksbr }}</p>
+          </div>
+          <div>
+            <p>{{ subitem.price_display }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+</section>
+
 {% endblock %}

@@ -1,0 +1,14 @@
+@layer components {
+  .navitem {
+    @apply px-3 py-2 rounded border border-zinc-800 min-w-24 text-center font-extralight;
+  }
+  .navitem:hover {
+    @apply bg-zinc-800 text-zinc-300 border-brand;
+  }
+  .navitem.active {
+    @apply bg-zinc-800 text-zinc-300 font-semibold border-brand border-2;
+  }
+  .link {
+    @apply text-brand hover:brightness-150;
+  }
+}

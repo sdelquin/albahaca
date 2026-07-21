@@ -1,0 +1,7 @@
+@utility highlight {
+  @apply text-brand;
+}
+
+@utility layout {
+  @apply mx-1 sm:mx-5 xl:mx-40;
+}

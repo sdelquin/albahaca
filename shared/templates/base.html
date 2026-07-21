@@ -9,9 +9,8 @@
     {% include 'includes/og.html' %}
     <link rel="icon" type="image/png" href="{% hashed_static 'img/favicon.png' %}" />
 
-    <link rel="stylesheet" href="{% hashed_static 'bulma/css/bulma.min.css' %}" />
+    <link rel="stylesheet" href="{% hashed_static 'css/tailwind.css' %}" />
     <link rel="stylesheet" href="{% hashed_static '@fortawesome/fontawesome-free/css/all.min.css' %}" />
-    <link rel="stylesheet" href="{% hashed_static 'css/fonts.css' %}" />
     <link rel="stylesheet" href="{% hashed_static 'css/styles.css' %}" />
 
     {% block extra_css %}
@@ -23,15 +22,10 @@
     </title>
   </head>
   <body>
-    {% include 'includes/navbar.html' %}
-
-    <!--<section class="section">-->
-      <div class="container mt-5">
-        {% block content %}
-        {% endblock %}
-      </div>
-    <!--</section>-->
-
+    {% include 'includes/header.html' %}
+    <main class="layout">
+      {% block content %}{% endblock %}
+    </main>
     {% include 'includes/footer.html' %}
 
     <button id="toTop"><i class="fa-solid fa-circle-arrow-up"></i></button>

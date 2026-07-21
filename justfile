@@ -210,6 +210,7 @@ deploy:
     git pull
     uv sync --no-dev --group prod
     npm ci --no-audit --no-fund
+    just tailwind
     uv run ./manage.py migrate
     uv run ./manage.py collectstatic --no-input --clear
     supervisorctl restart albahaca
@@ -231,3 +232,16 @@ sync-db:
 @sync: sync-media sync-db
     just create-su admin admin admin@example.com
     echo "✔ Media and database synced from production server"
+
+# Build (and watch) Tailwind CSS (for development)
+alias tw:=tailwind-watch
+[group('static')]
+tailwind-watch:
+    #!/usr/bin/env bash
+    npx tailwindcss -i shared/static/css/app.css -o shared/static/css/tailwind.css --watch
+
+# Build Tailwind CSS (for production)
+[group('static')]
+tailwind:
+    #!/usr/bin/env bash
+    npx tailwindcss -i shared/static/css/app.css -o shared/static/css/tailwind.css
