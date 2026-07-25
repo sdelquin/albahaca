@@ -179,7 +179,7 @@ if not DEBUG:
 THUMBNAILS_SIZE = config('THUMBNAILS_SIZE', default='700x800')
 
 MANAGE_PREFIX = config('MANAGE_PREFIX', default='gestion')
-BASE_DOMAINS = config('BASE_DOMAINS', default='pizzerialaalbaca.es', cast=config.list)
+BASE_DOMAINS = config('BASE_DOMAINS', default='pizzerialaalbahaca.es', cast=config.list)
 ALLOWED_HOSTS = [f'{MANAGE_PREFIX}.{domain}' for domain in BASE_DOMAINS] + BASE_DOMAINS
 
 LOGIN_URL = config('LOGIN_URL', default='login')
