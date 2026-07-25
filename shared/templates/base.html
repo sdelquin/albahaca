@@ -22,8 +22,12 @@
     </title>
   </head>
   <body>
-    {% include 'includes/header.html' %}
-    <main class="layout">
+    {% if site == 'manage' %}
+      {% include 'includes/header_manage.html' %}
+    {% else %}
+      {% include 'includes/header_public.html' %}
+    {% endif %}
+    <main class="layout flex-1">
       {% block content %}{% endblock %}
     </main>
     {% include 'includes/footer.html' %}

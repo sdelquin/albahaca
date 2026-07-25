@@ -1,6 +1,6 @@
 @layer components {
   .navitem {
-    @apply px-3 py-2 rounded border border-zinc-800 min-w-24 text-center font-extralight;
+    @apply py-1 px-1 rounded border border-zinc-800 sm:min-w-24 text-center font-extralight;
   }
   .navitem:hover {
     @apply bg-zinc-800 text-zinc-300 border-brand;
@@ -10,5 +10,8 @@
   }
   .link {
     @apply text-brand hover:brightness-150;
+  }
+  .button {
+    @apply px-4 py-2 rounded bg-brand text-zinc-100 font-semibold hover:brightness-150;
   }
 }

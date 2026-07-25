@@ -1,6 +1,6 @@
 @layer base {
   body {
-    @apply font-sans bg-zinc-900 text-zinc-300 flex flex-col;
+    @apply font-sans bg-zinc-900 text-zinc-300 flex flex-col min-h-screen;
   }
 
   h1,
@@ -12,5 +12,29 @@
 
   a {
     @apply transition-colors;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-zinc-100;
+    @apply placeholder:text-zinc-500;
+    @apply focus:border-brand focus:outline-none;
+  }
+
+  label {
+    @apply mb-2 block font-medium text-zinc-200;
+  }
+
+  .errorlist {
+    @apply mb-3 list-none rounded-lg border border-red-900 bg-red-950/50 p-3 text-sm text-red-300;
+  }
+
+  .errorlist li + li {
+    @apply mt-1;
+  }
+
+  .form-input {
+    @apply mb-3;
   }
 }

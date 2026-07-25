@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="mx-auto w-full max-w-sm">
+  <p class="text-3xl font-semibold mb-7 border-b border-zinc-500">Iniciar sesión</p>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form }}
+    <input class="mt-8 form-button" type="submit" value="Login">
+  </form>
+</section>
+{% endblock %}

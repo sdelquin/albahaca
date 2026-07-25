@@ -27,9 +27,6 @@ DEBUG = config('DEBUG', default=True, cast=config.boolean)
 
 SECRET_KEY = config('SECRET_KEY', default='django-is-awesome')
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=config.list)
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,6 +47,8 @@ INSTALLED_APPS = [
     'menu.apps.MenuConfig',
     'gallery.apps.GalleryConfig',
     'contact.apps.ContactConfig',
+    'accounts.apps.AccountsConfig',
+    'reservations.apps.ReservationsConfig',
 ]
 
 MIDDLEWARE = [
@@ -61,9 +60,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_browser_reload.middleware.BrowserReloadMiddleware',
+    # CUSTOM
+    'shared.middleware.HostURLConfMiddleware',
 ]
 
-ROOT_URLCONF = 'main.urls'
+ROOT_URLCONF = 'main.urls_public'
 
 TEMPLATES = [
     {
@@ -75,6 +76,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # CUSTOM
+                'shared.context_processors.site_context',
             ],
         },
     },
@@ -116,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -174,3 +177,10 @@ if not DEBUG:
     }
 
 THUMBNAILS_SIZE = config('THUMBNAILS_SIZE', default='700x800')
+
+MANAGE_PREFIX = config('MANAGE_PREFIX', default='gestion')
+BASE_DOMAINS = config('BASE_DOMAINS', default='pizzerialaalbaca.es', cast=config.list)
+ALLOWED_HOSTS = [f'{MANAGE_PREFIX}.{domain}' for domain in BASE_DOMAINS] + BASE_DOMAINS
+
+LOGIN_URL = config('LOGIN_URL', default='login')
+SWAP_BASE_DOMAINS = config('SWAP_BASE_DOMAINS', default='False', cast=config.boolean)

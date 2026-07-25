@@ -18,13 +18,14 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.shortcuts import render
 from django.urls import include, path
+
+from homepage.views_public import index
 
 urlpatterns = [
     path('__reload__/', include('django_browser_reload.urls')),
     path(f'{settings.ADMIN_URL}', admin.site.urls),
-    path('', lambda r: render(r, 'homepage/index.html')),
+    path('', index, name='index'),
     path('carta/', include('menu.urls')),
     path('galeria/', include('gallery.urls')),
     path('contacto/', include('contact.urls')),

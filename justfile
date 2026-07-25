@@ -12,11 +12,7 @@ dev0 port="8000":
     else
         IP=$(ip route get 1 | awk '{print $7; exit}')
     fi
-    if grep -Eq "ALLOWED_HOSTS.*$IP" main/settings.py .env 2>/dev/null; then
-        uv run ./manage.py runserver 0.0.0.0:{{ port }}
-    else
-        echo "Add \"$IP\" to ALLOWED_HOSTS in main/settings.py or .env"
-    fi
+    uv run ./manage.py runserver 0.0.0.0:{{ port }}
 
 alias c:=check
 # Check Django project

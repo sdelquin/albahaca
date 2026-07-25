@@ -1,0 +1,18 @@
+{% load extras %}
+
+<header class="mt-5 mb-8 layout flex items-center justify-between gap-3 overflow-x-auto">
+  <a href="/" class="shrink-0">
+    <img class="w-24" src="{% hashed_static 'img/logo-laalbahaca-gestion.svg' %}" alt="Pizzería La Albahaca">
+  </a>
+  {% if user.is_authenticated %}
+    <div class="flex items-center gap-3">
+      <nav class="flex gap-3 text-zinc-400">
+        {% navitem 'reservations-manage:index' 'Reservas' %}
+      </nav>
+      <div class="flex items-center gap-2 whitespace-nowrap">
+        <span><i class="fa-regular fa-user"></i> {{ user.username }}</span>
+        <a class="link" href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+      </div>
+    </div>
+  {% endif %}
+</header>
