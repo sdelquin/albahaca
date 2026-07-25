@@ -4,4 +4,5 @@ from django.shortcuts import render
 
 @login_required
 def index(request):
-    return render(request, 'reservations/manage/index.html')
+    context = {'section': 'Reservas'}
+    return render(request, 'reservations/manage/index.html', context)

@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 @login_required
 def index(request):
-    return render(request, 'homepage/manage/index.html')
+    return render(request, 'homepage/manage/index.html', {'section': 'Gestión'})
