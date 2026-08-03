@@ -3,7 +3,7 @@
 }
 
 @utility layout {
-  @apply mx-1 sm:mx-5 xl:mx-40;
+  @apply mx-1 sm:mx-5 xl:mx-80;
 }
 
 @utility narrow {
