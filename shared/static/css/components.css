@@ -1,17 +1,60 @@
 @layer components {
   .navitem {
-    @apply py-1 px-1 rounded border border-zinc-800 sm:min-w-24 text-center font-extralight;
+    @apply py-1 px-1 rounded-lg bg-zinc-800 sm:min-w-24 text-center font-light;
+
+    &:hover {
+      @apply bg-zinc-700 text-zinc-300;
+    }
+
+    &.active {
+      @apply text-zinc-300 font-semibold bg-emerald-800;
+    }
   }
-  .navitem:hover {
-    @apply bg-zinc-800 text-zinc-300 border-brand;
-  }
-  .navitem.active {
-    @apply bg-zinc-800 text-zinc-300 font-semibold border-brand border-2;
-  }
+
   .link {
     @apply text-brand hover:brightness-150;
   }
+
   .button {
-    @apply px-4 py-2 rounded bg-brand text-zinc-100 font-semibold hover:brightness-150;
+    @apply px-4 py-2 rounded-lg bg-brand text-zinc-100 font-semibold hover:brightness-120 cursor-pointer;
+
+    &:disabled {
+      @apply bg-zinc-800 text-zinc-500 cursor-not-allowed;
+    }
+  }
+
+  .weekday {
+    @apply font-semibold text-sm md:text-lg truncate;
+  }
+
+  .reservation-date {
+    @apply rounded-lg bg-emerald-800 px-3 py-2 cursor-pointer relative overflow-hidden;
+
+    &:hover {
+      @apply bg-emerald-900;
+    }
+
+    &.disabled {
+      @apply bg-zinc-600 cursor-not-allowed;
+    }
+  }
+
+  .reservation-date-front {
+    @apply transition-all duration-300;
+  }
+
+  .reservation-date-back {
+    @apply absolute inset-0 flex items-center sm:px-3 text-xs;
+    @apply opacity-0;
+    @apply translate-y-full;
+    @apply transition-all duration-300;
+  }
+
+  .reservation-date:hover .reservation-date-front {
+    @apply -translate-y-full opacity-0;
+  }
+
+  .reservation-date:hover .reservation-date-back {
+    @apply translate-y-0 opacity-100;
   }
 }

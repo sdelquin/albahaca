@@ -13,9 +13,6 @@
     <link rel="stylesheet" href="{% hashed_static '@fortawesome/fontawesome-free/css/all.min.css' %}" />
     <link rel="stylesheet" href="{% hashed_static 'css/styles.css' %}" />
 
-    {% block extra_css %}
-    {% endblock %}
-
     <title>
       {% if section %} {{ section }} | {% endif %}
       Pizzería La Albahaca
@@ -34,9 +31,7 @@
 
     <button id="toTop"><i class="fa-solid fa-circle-arrow-up"></i></button>
   
+    <script defer src="{% hashed_static 'alpinejs/dist/cdn.min.js' %}"></script>
     <script src="{% hashed_static 'js/main.js' %}"></script>
-
-    {% block extra_js %}
-    {% endblock %}
   </body>
 </html>

@@ -7,12 +7,14 @@ dependencies = [
     "django-admin-sortable2>=2.3.1",
     "pillow>=12.1.1",
     "prettyconf>=2.3.0",
+    "python-dateutil>=2.9.0.post0",
     "sorl-thumbnail>=13.0.0",
 ]
 
 [dependency-groups]
 dev = [
     "django-browser-reload>=1.21.0",
+    "ipython>=9.16.0",
 ]
 
 prod = [

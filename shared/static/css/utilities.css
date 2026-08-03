@@ -6,7 +6,6 @@
   @apply mx-1 sm:mx-5 xl:mx-40;
 }
 
-@utility form-button {
-  @apply rounded-lg bg-brand px-4 py-2 text-zinc-100 transition-colors cursor-pointer;
-  @apply hover:bg-brand/80;
+@utility narrow {
+  @apply w-full max-w-sm;
 }

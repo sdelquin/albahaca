@@ -7,17 +7,17 @@
 }
 
 @font-face {
-  font-family: "DM Serif Display";
-  src: url("/static/fonts/DMSerifDisplay/DMSerifDisplay-Regular.ttf")
+  font-family: "Montserrat";
+  src: url("/static/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
     format("truetype");
-  font-weight: 400;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "DM Serif Display";
-  src: url("/static/fonts/DMSerifDisplay/DMSerifDisplay-Italic.ttf")
+  font-family: "Montserrat";
+  src: url("/static/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf")
     format("truetype");
   font-weight: 100 900;
   font-style: italic;

@@ -1,0 +1,47 @@
+{% load reservations_extras %}
+<div
+  {% if date.enabled %}
+    @click="
+      selectedDate = '{{ date.isoformat }}';
+      $nextTick(() => {
+        document
+          .getElementById('day-detail')
+          .scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
+      })
+    "
+  {% endif %}
+  :class="selectedDate === '{{ date.isoformat }}'
+    ? 'ring-2 ring-primary'
+    : ''
+  "
+  class="
+      reservation-date
+      {% if not date.enabled %}disabled{% endif %}
+  "
+>
+  <!-- Front -->
+  <div class="reservation-date-front {% if date.is_today %}bg-pink-700 inline rounded-2xl px-2{% endif %}">
+    {{ date.day }}
+  </div>
+
+  <!-- Back -->
+  <div class="reservation-date-back">
+    {% if not date.enabled %}
+      <p>{{ date.details }}</p>
+    {% else %}
+      <div class="flex flex-col min-w-0 w-full">
+        {% for service in date.services %}
+          <div class="flex items-center gap-1 min-w-0">
+            <i class="fa-solid fa-circle {{ service|reservation_level }} shrink-0"></i>
+            <span class="truncate">
+              {{ service.service.name }}
+            </span>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>

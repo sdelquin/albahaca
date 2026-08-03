@@ -184,3 +184,5 @@ ALLOWED_HOSTS = [f'{MANAGE_PREFIX}.{domain}' for domain in BASE_DOMAINS] + BASE_
 
 LOGIN_URL = config('LOGIN_URL', default='login')
 SWAP_BASE_DOMAINS = config('SWAP_BASE_DOMAINS', default='False', cast=config.boolean)
+
+OPEN_RESERVATIONS_DAYS = config('OPEN_RESERVATIONS_DAYS', default=30, cast=int)

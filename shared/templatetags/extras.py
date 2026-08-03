@@ -31,5 +31,5 @@ def navitem(context, url_name, title):
         url = reverse(url_name)
     except NoReverseMatch:
         url = 'javascript:alert("Próximamente")'
-    active = request.path == url
+    active = request.path.startswith(url)
     return {'url': url, 'active': active, 'title': title}

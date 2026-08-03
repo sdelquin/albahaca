@@ -3,11 +3,28 @@
     @apply font-sans bg-zinc-900 text-zinc-300 flex flex-col min-h-screen;
   }
 
-  h1,
-  h2,
-  h3,
+  h1 {
+    @apply font-display text-5xl font-bold;
+  }
+
+  h2 {
+    @apply font-display text-4xl font-semibold;
+  }
+
+  h3 {
+    @apply font-display text-3xl font-semibold;
+  }
+
   h4 {
-    @apply font-display;
+    @apply font-display text-2xl font-medium;
+  }
+
+  h5 {
+    @apply text-xl font-medium;
+  }
+
+  h6 {
+    @apply text-lg font-medium;
   }
 
   a {
