@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="mx-auto w-full max-w-sm">
-  <p class="text-3xl font-semibold mb-7 border-b border-zinc-500">Iniciar sesión</p>
-  <form method="post" novalidate>
+<section class="mx-auto w-full max-w-sm bg-zinc-800/40 rounded-2xl shadow-xl flex flex-col overflow-hidden">
+  <!-- Header -->
+  <div class="bg-zinc-800 p-6 text-center">
+    <h3>Inicio de sesión</h3>
+    <h4 class="opacity-25">Panel de gestión</h4>
+  </div>
+  <!-- Content -->
+  <form method="post" novalidate class="p-8">
     {% csrf_token %}
     {{ form }}
-    <input class="mt-8 form-button" type="submit" value="Login">
+    <input class="mt-8 button" type="submit" value="Login">
   </form>
 </section>
 {% endblock %}
