@@ -1,5 +1,6 @@
 {% load reservations_extras %}
 <!-- x-show="selectedDate === '{{ date.isoformat }}'" -->
+<!-- x-show="'2026-08-21' === '{{ date.isoformat }}'" -->
 <div
   x-show="selectedDate === '{{ date.isoformat }}'"
   x-cloak
@@ -7,17 +8,19 @@
   <h4 class="mb-4">{{ date.name }}</h4>
   <div class="flex flex-col sm:flex-row gap-4">
     {% for service in date.services %}
-      <div class="rounded bg-zinc-800">
-        <div class="flex justify-between items-center gap-1 bg-zinc-700 px-2 rounded-t">
+      <div class="rounded bg-zinc-800/40 shadow-lg overflow-hidden">
+        <!-- Header -->
+        <div class="flex justify-between items-center gap-1 bg-zinc-700 px-2 py-1">
           <div class="flex items-center gap-1">
             <i class="fa-solid fa-circle {{ service|reservation_level }}"></i>
-            <h6>{{ service.service.name }}</h6>
+            <p class="font-bold">{{ service.service.name }}</p>
           </div>
           <div class="flex items-center gap-1">
             <i class="fa-solid fa-users-viewfinder"></i>
             <span class="font-semibold">{{ service.reserved_percentage|stringformat:".2f" }}%</span>
           </div>
         </div>
+        <!-- Content -->
         <table class="w-full text-sm border-separate border-spacing-2">
           <thead>
             <tr>
