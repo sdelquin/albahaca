@@ -112,6 +112,7 @@ class Month:
         today = datetime.date.today()
         self.ref_year = ref_year or today.year
         self.ref_month = ref_month or today.month
+        self.current_month = self.ref_year == today.year and self.ref_month == today.month
         self.only_days_belonging_to_month = only_days_belonging_to_month
         self.management_mode = management_mode
         self.build_dates()
