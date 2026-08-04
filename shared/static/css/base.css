@@ -39,6 +39,10 @@
     @apply focus:border-brand focus:outline-none;
   }
 
+  button {
+    @apply hover:cursor-pointer;
+  }
+
   label {
     @apply mb-2 block font-medium text-zinc-200;
   }

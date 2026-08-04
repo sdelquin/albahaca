@@ -4,44 +4,7 @@
 <h1 class="text-5xl mb-5">Reservas</h1>
 
 <section class="mt-3">
-  <div class="flex w-full items-center mb-5 px-2 py-1 rounded bg-pink-900">
-    <h2 class="grow">{{ month|title }}</h2>
-    <h2 class="flex items-center gap-1">
-      <a class="opacity-50 hover:opacity-100" href="{% url 'reservations:index' %}?mes={{ month.previous_month }}">
-        <i class="fa-solid fa-circle-chevron-left"></i>
-      </a>
-      <a class="text-lg opacity-50 hover:opacity-100" href="{% url 'reservations:index' %}">
-        <i class="fa-solid fa-circle"></i>
-      </a>
-      <a class="opacity-50 hover:opacity-100" href="{% url 'reservations:index' %}?mes={{ month.next_month }}">
-        <i class="fa-solid fa-circle-chevron-right"></i>
-      </a>
-    </h2>
-  </div>
-  <div x-data="{ selectedDate: null }">
-    <!-- Calendario -->
-    <section class="grid grid-cols-7 gap-4">
-      {% for weekday in weekdays %}
-        <div class="weekday">{{ weekday }}</div>
-      {% endfor %}
-      {% for week in month.weeks %}
-        {% for date in week %}
-          {% if date.belongs_to_month %}
-            {% include "reservations/manage/includes/reservation_date.html" %}
-          {% else %}
-            <div></div>
-          {% endif %}
-        {% endfor %}
-      {% endfor %}
-    </section>
-    <!-- Detalles -->
-    <section id="day-detail" class="mt-8">
-      {% for week in month.weeks %}
-        {% for date in week %}
-          {% include "reservations/manage/includes/reservation_detail.html" %}
-        {% endfor %}
-      {% endfor %}
-    </section>
+  {% include "reservations/manage/partials/reservation_month.html" %}
 </section>
 
 {% endblock %}

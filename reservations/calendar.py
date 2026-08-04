@@ -129,25 +129,17 @@ class Month:
                 week_days.append(day)
             self.weeks.append(week_days)
 
-    def get_next_month(self) -> tuple:
+    @property
+    def next_month(self) -> tuple:
         year = self.ref_year + (self.ref_month == 12)
-        month = self.ref_month + 1
+        month = self.ref_month + 1 if self.ref_month < 12 else 1
         return year, month
 
     @property
-    def next_month(self) -> str:
-        year, month = self.get_next_month()
-        return f'{year:04d}{month:02d}'
-
-    def get_previous_month(self) -> tuple:
+    def previous_month(self) -> tuple:
         year = self.ref_year - (self.ref_month == 1)
-        month = self.ref_month - 1
+        month = self.ref_month - 1 if self.ref_month > 1 else 12
         return year, month
-
-    @property
-    def previous_month(self) -> str:
-        year, month = self.get_previous_month()
-        return f'{year:04d}{month:02d}'
 
     @property
     def name(self) -> str:
