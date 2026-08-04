@@ -1,18 +1,17 @@
 {% load reservations_extras %}
 <div
-  {% if date.enabled %}
-    @click="
+  @click="
+    if ({{ date.enabled|yesno:'true,false' }} || window.matchMedia('(hover: none)').matches) {
       selectedDate = '{{ date.isoformat }}';
       $nextTick(() => {
-        document
-          .getElementById('day-detail')
-          .scrollIntoView({
+        const detail = document.getElementById('day-detail');
+        window.scrollTo({
+            top: detail.offsetTop - 10,
             behavior: 'smooth',
-            block: 'start',
-          })
-      })
-    "
-  {% endif %}
+        });
+      });
+    }
+  "
   :class="selectedDate === '{{ date.isoformat }}'
     ? 'ring-2 ring-primary'
     : ''
@@ -23,7 +22,14 @@
   "
 >
   <!-- Front -->
-  <div class="reservation-date-front {% if date.is_today %}bg-pink-700 inline rounded-2xl px-2{% endif %}">
+  <div
+    class="
+      reservation-date-front
+      {% if date.is_today %}
+        bg-pink-700 inline rounded px-2
+      {% endif %}
+    "
+  >
     {{ date.day }}
   </div>
 

@@ -28,7 +28,7 @@
   }
 
   .reservation-date {
-    @apply rounded-lg bg-emerald-800 px-3 py-2 cursor-pointer relative overflow-hidden;
+    @apply rounded-lg bg-emerald-800 px-2 sm:px-3 py-2 cursor-pointer relative overflow-hidden;
 
     &:hover {
       @apply bg-emerald-900;
@@ -40,7 +40,7 @@
   }
 
   .reservation-date-front {
-    @apply transition-all duration-300;
+    @apply text-center sm:text-left transition-all duration-300;
   }
 
   .reservation-date-back {
@@ -50,11 +50,13 @@
     @apply transition-all duration-300;
   }
 
-  .reservation-date:hover .reservation-date-front {
-    @apply -translate-y-full opacity-0;
-  }
+  @media (hover: hover) {
+    .reservation-date:hover .reservation-date-front {
+      @apply -translate-y-full opacity-0;
+    }
 
-  .reservation-date:hover .reservation-date-back {
-    @apply translate-y-0 opacity-100;
+    .reservation-date:hover .reservation-date-back {
+      @apply translate-y-0 opacity-100;
+    }
   }
 }
