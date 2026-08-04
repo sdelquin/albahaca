@@ -11,8 +11,9 @@ from .models import Reservation, Service, TableType
 
 
 class Day:
-    def __init__(self, date: datetime.date):
+    def __init__(self, date: datetime.date, *, management_mode: bool = False):
         self.date = date
+        self.management_mode = management_mode
         self.build_services()
         self.check_for_reservation()
 
@@ -58,7 +59,9 @@ class Day:
         elif Vacation.is_vacation(self.date):
             self.enabled = False
             self.details = 'No reservable: Vacaciones'
-        elif self.date > (today + datetime.timedelta(days=settings.OPEN_RESERVATIONS_DAYS)):
+        elif not self.management_mode and self.date > (
+            today + datetime.timedelta(days=settings.OPEN_RESERVATIONS_DAYS)
+        ):
             self.enabled = False
             self.details = 'No reservable: Muy lejano a horario'
         elif not self.services:
@@ -98,31 +101,58 @@ class Day:
 
 
 class Month:
-    def __init__(self, ref_year: int = None, ref_month: int = None):
+    def __init__(
+        self,
+        ref_year: int | None = None,
+        ref_month: int | None = None,
+        *,
+        management_mode: bool = False,
+        only_days_belonging_to_month: bool = True,
+    ):
         today = datetime.date.today()
         self.ref_year = ref_year or today.year
         self.ref_month = ref_month or today.month
+        self.only_days_belonging_to_month = only_days_belonging_to_month
+        self.management_mode = management_mode
         self.build_dates()
 
     def build_dates(self) -> None:
         cal = calendar.Calendar()
         self.weeks = []
         for week in cal.monthdatescalendar(self.ref_year, self.ref_month):
-            self.weeks.append([Day(date) for date in week])
+            week_days = []
+            for date in week:
+                day = Day(date, management_mode=self.management_mode)
+                day.belongs_to_month = not self.only_days_belonging_to_month or (
+                    date.month == self.ref_month
+                )
+                week_days.append(day)
+            self.weeks.append(week_days)
 
-    @property
-    def next_month(self) -> tuple:
-        year = self.ref_year + self.ref_month == 12
+    def get_next_month(self) -> tuple:
+        year = self.ref_year + (self.ref_month == 12)
         month = self.ref_month + 1
         return year, month
 
     @property
-    def previous_month(self) -> tuple:
-        year = self.ref_year - self.ref_month == 1
+    def next_month(self) -> str:
+        year, month = self.get_next_month()
+        return f'{year:04d}{month:02d}'
+
+    def get_previous_month(self) -> tuple:
+        year = self.ref_year - (self.ref_month == 1)
         month = self.ref_month - 1
         return year, month
+
+    @property
+    def previous_month(self) -> str:
+        year, month = self.get_previous_month()
+        return f'{year:04d}{month:02d}'
 
     @property
     def name(self) -> str:
         locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
         return calendar.month_name[self.ref_month].capitalize()
+
+    def __str__(self) -> str:
+        return f'{self.name} {self.ref_year}'
