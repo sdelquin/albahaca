@@ -14,17 +14,18 @@
     <link rel="stylesheet" href="{% hashed_static 'css/styles.css' %}" />
 
     <title>
-      {% if section %} {{ section }} | {% endif %}
+      {% if title %} {{ title }} | {% endif %}
       Pizzería La Albahaca
     </title>
   </head>
   <body>
-    {% if site == 'manage' %}
+    {% if manage %}
       {% include 'includes/header_manage.html' %}
     {% else %}
       {% include 'includes/header_public.html' %}
     {% endif %}
-    <main class="layout flex-1">
+    <main id="content" class="layout flex-1">
+      {% include 'includes/headline.html' %}
       {% block content %}{% endblock %}
     </main>
     {% include 'includes/footer.html' %}

@@ -16,10 +16,14 @@
   }
 
   .button {
-    @apply px-4 py-2 rounded-lg bg-brand text-zinc-100 font-semibold hover:brightness-120 cursor-pointer;
+    @apply text-center px-4 py-2 rounded-lg bg-brand text-zinc-100 font-semibold hover:brightness-120 cursor-pointer;
 
     &:disabled {
       @apply bg-zinc-800 text-zinc-500 cursor-not-allowed;
+    }
+
+    &.slim {
+      @apply px-2 py-1 text-sm;
     }
   }
 

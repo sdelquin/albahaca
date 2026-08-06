@@ -5,6 +5,7 @@ requires-python = ">=3.14"
 dependencies = [
     "django>=6.0.3",
     "django-admin-sortable2>=2.3.1",
+    "django-htmx>=1.29.0",
     "pillow>=12.1.1",
     "prettyconf>=2.3.0",
     "sorl-thumbnail>=13.0.0",

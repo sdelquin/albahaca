@@ -8,23 +8,15 @@ from .models import Weekday
 
 
 @login_required
-def index(request):
-    context = {
-        'section': 'Reservas',
-        'month': Month(management_mode=True),
-        'weekdays': Weekday.objects.all(),
-    }
-    return render(request, 'reservations/manage/index.html', context)
-
-
-@login_required
-def month(request, year: int = None, month: int = None):
+def index(request, year: int = None, month: int = None):
     today = datetime.date.today()
     year = year or today.year
     month = month or today.month
     context = {
+        'title': 'Reservas',
         'month': Month(year, month, management_mode=True),
         'weekdays': Weekday.objects.all(),
-        'current_month': (today.year, today.month),
     }
-    return render(request, 'reservations/manage/partials/reservation_month.html', context)
+    if request.htmx:
+        return render(request, 'reservations/manage/partials/reservation_month.html', context)
+    return render(request, 'reservations/manage/index.html', context)

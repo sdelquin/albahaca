@@ -22,28 +22,40 @@
             </div>
           </div>
           <!-- Content -->
-          <table class="w-full text-sm border-separate border-spacing-2">
-            <thead>
-              <tr>
-                <th></th>
-                <th class="border-b">Total</th>
-                <th class="border-b">Ocupadas</th>
-                <th class="border-b">Libres</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for table_type in service.table_types %}
+          <div class="flex flex-col gap-3">
+            <table class="w-full text-sm border-separate border-spacing-2">
+              <thead>
                 <tr>
-                  <td>{{ table_type.table_type }}</td>
-                  <td>{{ table_type.total_tables }}</td>
-                  <td>{{ table_type.reserved_tables }}</td>
-                  <td class="{% if table_type.free_tables == 0 %} text-red-500 {% else %} text-emerald-400 {% endif %}">
-                    {{ table_type.free_tables }}
-                  </td>
+                  <th></th>
+                  <th class="border-b">Total</th>
+                  <th class="border-b">Ocupadas</th>
+                  <th class="border-b">Libres</th>
                 </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {% for table_type in service.table_types %}
+                  <tr>
+                    <td>{{ table_type.table_type }}</td>
+                    <td>{{ table_type.total_tables }}</td>
+                    <td>{{ table_type.reserved_tables }}</td>
+                    <td class="{% if table_type.free_tables == 0 %} text-red-500 {% else %} text-emerald-400 {% endif %}">
+                      {{ table_type.free_tables }}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="flex justify-between px-2">
+              <a href="" class="px-3 button slim bg-indigo-600">
+                <i class="fa-solid fa-eye"></i>
+                Ver reservas
+              </a>
+              <button class="px-3 button slim bg-yellow-600" {% if not date.enabled %}disabled{% endif %}>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                Crear reserva
+              </button>
+            </div>
+          </div>
         </div>
       {% endfor %}
     </div>

@@ -5,29 +5,35 @@
     <h2 class="grow text-2xl sm:text-4xl">{{ month|title }}</h2>
     <!-- Botones de cambio de mes -->
     <h2 class="flex items-center gap-1">
+      {% url 'reservations:index' month.previous_month.0 month.previous_month.1 as url %}
       <button
         class="opacity-50 hover:opacity-100"
-        hx-get="{% url 'reservations:month' month.previous_month.0 month.previous_month.1 %}"
+        hx-get="{{ url }}"
         hx-target="#month"
         hx-swap="outerHTML"
+        hx-push-url="{{ url }}"
         title="Mes anterior"
       >
         <i class="fa-solid fa-circle-chevron-left"></i>
       </button>
+      {% url 'reservations:index' as url %}
       <button
         class="text-lg opacity-{% if month.current_month %}100{% else %}50{% endif %} hover:opacity-100"
-        hx-get="{% url 'reservations:month' %}"
+        hx-get="{{ url }}"
         hx-target="#month"
         hx-swap="outerHTML"
+        hx-push-url="{{ url }}"
         title="Mes actual"
       >
         <i class="fa-solid fa-circle"></i>
       </button>
+      {% url 'reservations:index' month.next_month.0 month.next_month.1 as url %}
       <button
         class="opacity-50 hover:opacity-100"
-        hx-get="{% url 'reservations:month' month.next_month.0 month.next_month.1 %}"
+        hx-get="{{ url }}"
         hx-target="#month"
         hx-swap="outerHTML"
+        hx-push-url="{{ url }}"
         title="Mes siguiente"
       >
         <i class="fa-solid fa-circle-chevron-right"></i>

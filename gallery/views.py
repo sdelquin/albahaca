@@ -7,7 +7,7 @@ from .models import Image
 def index(request):
     images = Image.objects.all()
     context = {
-        'section': 'Galería',
+        'title': 'Galería',
         'images': images,
         'thumbnail_size': settings.THUMBNAILS_SIZE,
     }

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'adminsortable2',
     'sorl.thumbnail',
+    'django_htmx',
     # CUSTOM
     'shared.apps.SharedConfig',
     'homepage.apps.HomepageConfig',
@@ -60,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_browser_reload.middleware.BrowserReloadMiddleware',
+    'django_htmx.middleware.HtmxMiddleware',
     # CUSTOM
     'shared.middleware.HostURLConfMiddleware',
 ]

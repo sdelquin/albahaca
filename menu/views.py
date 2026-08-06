@@ -5,5 +5,5 @@ from .models import Category
 
 def index(request):
     categories = Category.objects.all()
-    context = {'section': 'Carta', 'categories': categories}
+    context = {'title': 'Carta', 'categories': categories}
     return render(request, 'menu/index.html', context)
