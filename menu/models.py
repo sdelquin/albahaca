@@ -7,15 +7,28 @@ class ActiveManager(models.Manager):
 
 
 class Item(models.Model):
-    name = models.CharField(max_length=256)
-    description = models.TextField(blank=True)
-    price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
-    active = models.BooleanField(default=True)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='items')
-    order = models.PositiveSmallIntegerField(default=0)
+    name = models.CharField(max_length=256, verbose_name='Nombre')
+    description = models.TextField(blank=True, verbose_name='Descripción')
+    price = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        blank=True,
+        null=True,
+        verbose_name='Precio',
+    )
+    active = models.BooleanField(default=True, verbose_name='Activo')
+    category = models.ForeignKey(
+        'Category',
+        on_delete=models.CASCADE,
+        related_name='items',
+        verbose_name='Categoría',
+    )
+    order = models.PositiveSmallIntegerField(default=0, verbose_name='Orden')
 
     class Meta:
         ordering = ['order']
+        verbose_name = 'Item del menú'
+        verbose_name_plural = 'Items del menú'
 
     def __str__(self):
         return self.name
@@ -29,13 +42,25 @@ class Item(models.Model):
 
 
 class SubItem(models.Model):
-    details = models.CharField(max_length=256)
-    price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
-    item = models.ForeignKey('Item', on_delete=models.CASCADE, related_name='subitems')
-    order = models.PositiveSmallIntegerField(default=0)
+    details = models.CharField(max_length=256, verbose_name='Detalles')
+    price = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        blank=True,
+        null=True,
+        verbose_name='Precio',
+    )
+    item = models.ForeignKey(
+        'Item',
+        on_delete=models.CASCADE,
+        related_name='subitems',
+        verbose_name='Item del menú',
+    )
+    order = models.PositiveSmallIntegerField(default=0, verbose_name='Orden')
 
     class Meta:
-        verbose_name = 'SubItem'
+        verbose_name = 'Subitem del menú'
+        verbose_name_plural = 'Subitems del menú'
         ordering = ['order']
 
     def __str__(self):
@@ -51,14 +76,17 @@ class SubItem(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=256)
-    slug = models.SlugField(max_length=256, unique=True)
-    description = models.TextField(blank=True)
-    order = models.PositiveSmallIntegerField(default=0)
-    cover = models.ImageField(upload_to='categories/covers/', blank=True, null=True)
+    name = models.CharField(max_length=256, verbose_name='Nombre')
+    slug = models.SlugField(max_length=256, unique=True, verbose_name='Slug')
+    description = models.TextField(blank=True, verbose_name='Descripción')
+    order = models.PositiveSmallIntegerField(default=0, verbose_name='Orden')
+    cover = models.ImageField(
+        upload_to='categories/covers/', blank=True, null=True, verbose_name='Imagen de portada'
+    )
 
     class Meta:
-        verbose_name_plural = 'Categories'
+        verbose_name = 'Categoría'
+        verbose_name_plural = 'Categorías'
         ordering = ['order']
 
     def __str__(self):

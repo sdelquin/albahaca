@@ -2,18 +2,18 @@ from django.db import models
 
 
 class Info(models.Model):
-    street = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    state = models.CharField(max_length=255)
-    zip_code = models.CharField(max_length=20)
-    country = models.CharField(max_length=255)
-    email = models.EmailField()
-    latitude = models.FloatField()
-    longitude = models.FloatField()
-    google_place_id = models.CharField(max_length=255)
-    phone = models.CharField(max_length=20)
-    timetable = models.TextField()
-    social = models.TextField()
+    street = models.CharField(max_length=255, verbose_name='Calle y número')
+    city = models.CharField(max_length=255, verbose_name='Ciudad')
+    state = models.CharField(max_length=255, verbose_name='Estado o provincia')
+    zip_code = models.CharField(max_length=20, verbose_name='Código postal')
+    country = models.CharField(max_length=255, verbose_name='País')
+    email = models.EmailField(verbose_name='Correo electrónico')
+    latitude = models.FloatField(verbose_name='Latitud')
+    longitude = models.FloatField(verbose_name='Longitud')
+    google_place_id = models.CharField(max_length=255, verbose_name='ID del lugar en Google')
+    phone = models.CharField(max_length=20, verbose_name='Teléfono')
+    timetable = models.TextField(verbose_name='Horario')
+    social = models.TextField(verbose_name='Redes sociales')
 
     class Meta:
         verbose_name = 'Información de contacto'
