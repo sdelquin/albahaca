@@ -4,8 +4,8 @@ register = template.Library()
 
 
 @register.filter
-def reservation_level(service: dict):
-    rp = service['reserved_percentage']
+def reservation_level(service):
+    rp = service.reserved_percentage
     if rp < 20:
         return 'text-green-500'
     if rp < 60:

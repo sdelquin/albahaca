@@ -60,7 +60,7 @@ class Service(models.Model):
 class TimeSlot(models.Model):
     time = models.TimeField(verbose_name='Hora')
     service = models.ForeignKey(
-        Service, on_delete=models.CASCADE, verbose_name='Turno asociado', related_name='timeslots'
+        Service, on_delete=models.CASCADE, verbose_name='Turno asociado', related_name='time_slots'
     )
 
     class Meta:
@@ -124,6 +124,18 @@ class Reservation(models.Model):
     def __str__(self):
         return f'{self.name} - {self.date} {self.time_slot} - {self.party_size} comensales'
 
+    def get_table_types_display(self) -> str:
+        details = self.reservation_table_type_details.select_related('table_type').order_by(
+            'table_type__seats'
+        )
+        buf = []
+        for detail in details:
+            item = detail.table_type.code
+            if (q := detail.quantity) > 1:
+                item += f'x{q}'
+            buf.append(item)
+        return ' + '.join(buf)
+
     def anonymize(self) -> None:
         self.name = '#' * len(str(self.name))  # type: ignore
         self.phone = '#' * len(str(self.phone))  # type: ignore
@@ -132,3 +144,4 @@ class Reservation(models.Model):
     class Meta:
         verbose_name = 'Reserva'
         verbose_name_plural = 'Reservas'
+        ordering = ['-date', 'time_slot__time', 'name']

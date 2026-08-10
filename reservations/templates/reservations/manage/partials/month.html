@@ -5,35 +5,47 @@
     <h2 class="grow text-2xl sm:text-4xl">{{ month|title }}</h2>
     <!-- Botones de cambio de mes -->
     <h2 class="flex items-center gap-1">
-      {% url 'reservations:index' month.previous_month.0 month.previous_month.1 as url %}
+      {% url 'reservations:month' month.previous_month.0 month.previous_month.1 as url %}
       <button
         class="opacity-50 hover:opacity-100"
         hx-get="{{ url }}"
         hx-target="#month"
         hx-swap="outerHTML"
         hx-push-url="{{ url }}"
+        hx-on:click="
+          document.getElementById('day').innerHTML = '';
+          document.getElementById('service').innerHTML = '';
+        "
         title="Mes anterior"
       >
         <i class="fa-solid fa-circle-chevron-left"></i>
       </button>
-      {% url 'reservations:index' as url %}
+      {% url 'reservations:month' month.current_month.0 month.current_month.1 as url %}
       <button
-        class="text-lg opacity-{% if month.current_month %}100{% else %}50{% endif %} hover:opacity-100"
+        class="text-lg opacity-{% if month.is_current_month %}100{% else %}50{% endif %} hover:opacity-100"
         hx-get="{{ url }}"
         hx-target="#month"
         hx-swap="outerHTML"
         hx-push-url="{{ url }}"
+        hx-on:click="
+          document.getElementById('day').innerHTML = '';
+          document.getElementById('service').innerHTML = '';
+        "
         title="Mes actual"
       >
         <i class="fa-solid fa-circle"></i>
       </button>
-      {% url 'reservations:index' month.next_month.0 month.next_month.1 as url %}
+      {% url 'reservations:month' month.next_month.0 month.next_month.1 as url %}
       <button
         class="opacity-50 hover:opacity-100"
         hx-get="{{ url }}"
         hx-target="#month"
         hx-swap="outerHTML"
         hx-push-url="{{ url }}"
+        hx-on:click="
+          document.getElementById('day').innerHTML = '';
+          document.getElementById('service').innerHTML = '';
+        "
         title="Mes siguiente"
       >
         <i class="fa-solid fa-circle-chevron-right"></i>
@@ -41,27 +53,19 @@
     </h2>
   </div>
 
-  <div x-data="{ selectedDate: null }">
-    <!-- Calendario -->
+  <!-- Calendario -->
+  <div x-data="{ selectedDate: '{{ day.date.isoformat|default:'null' }}' }">
     <section class="grid grid-cols-7 gap-4">
       {% for weekday in weekdays %}
         <div class="weekday">{{ weekday }}</div>
       {% endfor %}
       {% for week in month.weeks %}
-        {% for date in week %}
-          {% if date.belongs_to_month %}
-            {% include "reservations/manage/includes/reservation_date.html" %}
+        {% for day in week %}
+          {% if day.belongs_to_month %}
+            {% include "reservations/manage/includes/month_day.html" %}
           {% else %}
             <div></div>
           {% endif %}
-        {% endfor %}
-      {% endfor %}
-    </section>
-    <!-- Detalles -->
-    <section id="day-detail" class="mt-8">
-      {% for week in month.weeks %}
-        {% for date in week %}
-          {% include "reservations/manage/includes/reservation_detail.html" %}
         {% endfor %}
       {% endfor %}
     </section>

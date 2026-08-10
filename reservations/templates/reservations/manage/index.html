@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section>
-  {% include "reservations/manage/partials/reservation_month.html" %}
+<section class="flex flex-col gap-8">
+  {% include "reservations/manage/partials/month.html" %}
+  {% include "reservations/manage/partials/day.html" %}
+  {% include "reservations/manage/partials/service.html" %}
 </section>
 {% endblock %}

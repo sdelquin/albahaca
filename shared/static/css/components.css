@@ -19,7 +19,7 @@
     @apply text-center px-4 py-2 rounded-lg bg-brand text-zinc-100 font-semibold hover:brightness-120 cursor-pointer;
 
     &:disabled {
-      @apply bg-zinc-800 text-zinc-500 cursor-not-allowed;
+      @apply bg-zinc-800! text-zinc-500 cursor-not-allowed;
     }
 
     &.slim {

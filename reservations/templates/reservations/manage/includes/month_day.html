@@ -1,0 +1,59 @@
+{% load reservations_extras %}
+<div
+  {% url 'reservations:day' day.date.year day.date.month day.date.day as url %}
+  hx-get="{{ url }}"
+  hx-target="#day"
+  hx-swap="outerHTML"
+  hx-push-url="{{ url }}"
+  @click = "
+    selectedDate = '{{ day.date.isoformat }}'
+    $nextTick(() => {
+      document.getElementById('service').innerHTML = ''
+      const el = document.getElementById('day');
+      if (el) {
+        window.scrollTo({
+          top: el.offsetTop - 10,
+          behavior: 'smooth'
+        });
+      }
+    })
+  "
+  :class="
+    selectedDate === '{{ day.date.isoformat }}'
+    ? 'ring-2 ring-primary'
+    : ''
+  "
+  class="
+      reservation-date
+      {% if not day.enabled %}disabled{% endif %}
+  "
+>
+  <!-- Front -->
+  <div
+    class="
+      reservation-date-front
+      {% if day.is_today %}
+        bg-pink-700 inline rounded px-2
+      {% endif %}
+    "
+  >
+    {{ day.date.day }}
+  </div>
+
+  <!-- Back -->
+  <div class="reservation-date-back">
+    {% if not day.enabled %}
+      <p>{{ day.details }}</p>
+    {% else %}
+      <div class="flex flex-col min-w-0 w-full">
+        {% for service in day.services %}
+          <div class="flex items-center gap-1 min-w-0">
+            <span class="truncate">
+              {{ service }}
+            </span>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
