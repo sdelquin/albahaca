@@ -14,7 +14,7 @@
         hx-push-url="{{ url }}"
         hx-on:click="
           document.getElementById('day').innerHTML = '';
-          document.getElementById('service').innerHTML = '';
+          document.getElementById('service-action').innerHTML = '';
         "
         title="Mes anterior"
       >
@@ -29,7 +29,7 @@
         hx-push-url="{{ url }}"
         hx-on:click="
           document.getElementById('day').innerHTML = '';
-          document.getElementById('service').innerHTML = '';
+          document.getElementById('service-action').innerHTML = '';
         "
         title="Mes actual"
       >
@@ -44,7 +44,7 @@
         hx-push-url="{{ url }}"
         hx-on:click="
           document.getElementById('day').innerHTML = '';
-          document.getElementById('service').innerHTML = '';
+          document.getElementById('service-action').innerHTML = '';
         "
         title="Mes siguiente"
       >
@@ -62,7 +62,7 @@
       {% for week in month.weeks %}
         {% for day in week %}
           {% if day.belongs_to_month %}
-            {% include "reservations/manage/includes/month_day.html" %}
+            {% include "reservations/manage/includes/day.html" %}
           {% else %}
             <div></div>
           {% endif %}

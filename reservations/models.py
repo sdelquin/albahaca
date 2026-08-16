@@ -144,4 +144,4 @@ class Reservation(models.Model):
     class Meta:
         verbose_name = 'Reserva'
         verbose_name_plural = 'Reservas'
-        ordering = ['-date', 'time_slot__time', 'name']
+        ordering = ['-date', 'time_slot__time', 'created_at']

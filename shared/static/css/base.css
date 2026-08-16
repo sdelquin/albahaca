@@ -48,7 +48,7 @@
   }
 
   .errorlist {
-    @apply mb-3 list-none rounded-lg border border-red-900 bg-red-950/50 p-3 text-sm text-red-300;
+    @apply mb-3 list-none rounded-lg border border-red-900 bg-red-950/50 px-2 py-1 text-sm text-red-300;
   }
 
   .errorlist li + li {

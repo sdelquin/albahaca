@@ -1,0 +1,16 @@
+<div id="service-action" class="sm:w-1/2">
+  <h4 class="mb-4 border-b text-lg sm:text-2xl">Nueva reserva</h4>
+  <form
+    method="post"
+    novalidate
+    class="flex flex-col gap-2"
+    hx-post="{% url 'reservations:create-service-reservation' day.date.year day.date.month day.date.day selected_service.code %}"
+    hx-target="#service-action"
+    hx-swap="outerHTML"
+  >
+    {% csrf_token %}
+    {{ form }}
+
+    <input class="mt-8 button" type="submit" value="Reservar">
+  </form>
+</div>

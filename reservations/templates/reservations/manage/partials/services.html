@@ -1,0 +1,21 @@
+{% load extras %}
+
+<div id="day" x-data="{ selectedService: '{{ selected_service.code|default:'null' }}' }">
+  {% if day is not None %}
+    <h4 class="mb-4 text-xl sm:text-3xl">{{ day.date|datetime_es }}</h4>
+    {% if day.enabled %}
+      <div class="flex flex-col sm:flex-row gap-4">
+        {% for service in day.services %}
+          {% with sid="service-"|add:service.code %}
+            {% include "reservations/manage/includes/service.html" %}
+          {% endwith %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-zinc-400">
+        <i class="fa-solid fa-ban"></i>
+        {{ day.details }}
+      </p>
+    {% endif %}
+  {% endif %}
+</div>

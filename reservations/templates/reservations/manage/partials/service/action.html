@@ -1,0 +1,7 @@
+{% if reservations is not None %}
+  {% include "reservations/manage/partials/service/list_reservations.html" %}
+{% elif form %}
+  {% include "reservations/manage/partials/service/create_reservation.html" %}
+{% else %}
+  <div id="service-action"></div>
+{% endif %}

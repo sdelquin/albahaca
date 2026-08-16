@@ -1,6 +1,6 @@
 {% load reservations_extras %}
 <div
-  {% url 'reservations:day' day.date.year day.date.month day.date.day as url %}
+  {% url 'reservations:services' day.date.year day.date.month day.date.day as url %}
   hx-get="{{ url }}"
   hx-target="#day"
   hx-swap="outerHTML"
@@ -8,7 +8,7 @@
   @click = "
     selectedDate = '{{ day.date.isoformat }}'
     $nextTick(() => {
-      document.getElementById('service').innerHTML = ''
+      document.getElementById('service-action').innerHTML = ''
       const el = document.getElementById('day');
       if (el) {
         window.scrollTo({

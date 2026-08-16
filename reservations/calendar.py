@@ -1,20 +1,20 @@
 import calendar
 import datetime
 import locale
+from collections import defaultdict
 
 from django.conf import settings
 from django.db import models
 
 from contact.models import Vacation
 
-from .models import Reservation, Service, TableType
+from .models import Reservation, Service, TableType, TimeSlot
 
 
 class Day:
     def __init__(self, date: datetime.date, *, management_mode: bool = False):
         self.date = date
         self.management_mode = management_mode
-        self.check_for_reservation()
 
     def check_for_reservation(self) -> None:
         self.services = Service.get_services_for_date(self.date)
@@ -53,9 +53,8 @@ class Day:
                 service.details = 'No reservable: Muy próximo a horario'
             total_tables, reserved_tables = 0, 0
             for table_type in TableType.objects.all():
-                table_type_data = {'table_type': table_type}
-                table_type_data['total_tables'] = table_type.quantity
-                table_type_data['reserved_tables'] = (
+                table_type.total_tables = table_type.quantity
+                table_type.reserved_tables = (
                     Reservation.objects.filter(
                         date=self.date,
                         time_slot__service=service,
@@ -65,12 +64,10 @@ class Day:
                     )['total_reserved']
                     or 0
                 )
-                table_type_data['free_tables'] = (
-                    table_type_data['total_tables'] - table_type_data['reserved_tables']
-                )
-                total_tables += table_type_data['total_tables']
-                reserved_tables += table_type_data['reserved_tables']
-                service.table_types.append(table_type_data)
+                table_type.free_tables = table_type.total_tables - table_type.reserved_tables
+                total_tables += table_type.total_tables
+                reserved_tables += table_type.reserved_tables
+                service.table_types.append(table_type)
             service.reserved_percentage = reserved_tables / total_tables * 100
             if service.reserved_percentage == 100:
                 service.enabled = False
@@ -83,6 +80,36 @@ class Day:
 
     def __repr__(self):
         return f'CalendarDay <{self.date.isoformat}>'
+
+    def get_service_from_time_slot(self, time_slot: TimeSlot) -> Service | None:
+        for service in self.services:
+            if service == time_slot.service:
+                return service
+        return None
+
+    def fetch_table_types_for_reservation(
+        self, time_slot: TimeSlot, party_size: int
+    ) -> dict | None:
+        service = self.get_service_from_time_slot(time_slot)
+        left_party_size = party_size
+        assigned_table_types = defaultdict(int)
+        while left_party_size > 0:
+            # Encontrar el tipo de mesa libre más cercana a las personas que faltan por colocar
+            min_distance = 1024
+            assigned_table_type = None
+            for table_type in service.table_types:
+                if table_type.free_tables == 0:
+                    continue
+                if (distance := abs(table_type.seats - left_party_size)) <= min_distance:
+                    min_distance = distance
+                    assigned_table_type = table_type
+            if not assigned_table_type:
+                return None
+            left_party_size = max(left_party_size - assigned_table_type.seats, 0)
+            assigned_table_type.free_tables -= 1
+            assigned_table_type.reserved_tables += 1
+            assigned_table_types[assigned_table_type] += 1
+        return assigned_table_types
 
 
 class Month:
@@ -109,6 +136,7 @@ class Month:
             week_days = []
             for date in week:
                 day = Day(date, management_mode=self.management_mode)
+                day.check_for_reservation()
                 day.belongs_to_month = not self.only_days_belonging_to_month or (
                     date.month == self.ref_month
                 )

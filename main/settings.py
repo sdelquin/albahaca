@@ -188,3 +188,5 @@ LOGIN_URL = config('LOGIN_URL', default='login')
 SWAP_BASE_DOMAINS = config('SWAP_BASE_DOMAINS', default='False', cast=config.boolean)
 
 OPEN_RESERVATIONS_DAYS = config('OPEN_RESERVATIONS_DAYS', default=30, cast=int)
+MAX_PARTY_SIZE = config('MAX_PARTY_SIZE', default=6, cast=int)
+PHONE_REGEX = config('PHONE_REGEX', default=r'(\+\d{2}\s*)?\d{9}')
