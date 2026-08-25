@@ -13,7 +13,7 @@
         hx-swap="outerHTML"
         hx-push-url="{{ url }}"
         hx-on:click="
-          document.getElementById('day').innerHTML = '';
+          document.getElementById('services').innerHTML = '';
           document.getElementById('service-action').innerHTML = '';
         "
         title="Mes anterior"
@@ -28,7 +28,7 @@
         hx-swap="outerHTML"
         hx-push-url="{{ url }}"
         hx-on:click="
-          document.getElementById('day').innerHTML = '';
+          document.getElementById('services').innerHTML = '';
           document.getElementById('service-action').innerHTML = '';
         "
         title="Mes actual"
@@ -43,7 +43,7 @@
         hx-swap="outerHTML"
         hx-push-url="{{ url }}"
         hx-on:click="
-          document.getElementById('day').innerHTML = '';
+          document.getElementById('services').innerHTML = '';
           document.getElementById('service-action').innerHTML = '';
         "
         title="Mes siguiente"
@@ -54,7 +54,7 @@
   </div>
 
   <!-- Calendario -->
-  <div x-data="{ selectedDate: '{{ day.date.isoformat|default:'null' }}' }">
+  <div x-data="{selectedDate: '{{ day.date.isoformat|default:'null' }}' }">
     <section class="grid grid-cols-7 gap-4">
       {% for weekday in weekdays %}
         <div class="weekday">{{ weekday }}</div>

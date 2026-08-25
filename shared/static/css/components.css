@@ -39,7 +39,7 @@
     }
 
     &.disabled {
-      @apply bg-zinc-600 cursor-not-allowed;
+      @apply bg-zinc-600;
     }
   }
 

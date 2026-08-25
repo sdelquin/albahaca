@@ -1,36 +1,20 @@
 <div id="service-action">
   {% if reservations is not None %}
-    <div class="overflow-x-auto rounded-lg border border-zinc-700 bg-zinc-800/40 shadow-lg">
-      <table class="w-full min-w-190 text-sm">
-        <thead class="bg-zinc-700/80 text-zinc-100">
-          <tr>
-            <th class="px-4 py-3 text-left font-semibold">Nombre</th>
-            <th class="px-4 py-3 text-left font-semibold">Teléfono</th>
-            <th class="px-4 py-3 text-left font-semibold">Hora</th>
-            <th class="px-4 py-3 text-center font-semibold">Comensales</th>
-            <th class="px-4 py-3 text-left font-semibold">Mesa(s)</th>
-            <th class="px-4 py-3 text-left font-semibold">Observaciones</th>
-            <th class="px-4 py-3 text-left font-semibold">Gestionado por</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-zinc-700/70">
-          {% for reservation in reservations %}
-            <tr class="odd:bg-zinc-900/20 even:bg-zinc-900/40 hover:bg-zinc-700/30">
-              <td class="px-4 py-3 font-medium text-zinc-100">{{ reservation.name }}</td>
-              <td class="px-4 py-3 text-zinc-300">{{ reservation.phone }}</td>
-              <td class="px-4 py-3 text-zinc-300">{{ reservation.time_slot }}</td>
-              <td class="px-4 py-3 text-center font-semibold text-zinc-100">{{ reservation.party_size }}</td>
-              <td class="px-4 py-3 text-zinc-200">{{ reservation.get_table_types_display }}</td>
-              <td class="px-4 py-3 text-zinc-300">{{ reservation.remarks|default:'-' }}</td>
-              <td class="px-4 py-3 text-zinc-300">{{ reservation.managed_by.first_name|default:'-' }}</td>
-            </tr>
-          {% empty %}
-            <tr>
-              <td colspan="7" class="px-4 py-6 text-center text-zinc-400">No hay reservas para este turno.</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+    {% if reservations %}
+      <h4 class="mb-3">
+        <span class="text-3xl font-bold">{{ reservations|length }}</span>
+        reserva{{ reservations|length|pluralize }}
+      </h4>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {% for reservation in reservations %}
+          {% include "reservations/manage/includes/reservation.html" with show_buttons=True %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>
+        <i class="fa-regular fa-calendar-xmark"></i>
+        No hay reservas para el servicio seleccionado.
+      </p>
+    {% endif %}
   {% endif %}
 </div>

@@ -2,14 +2,14 @@
 <div
   {% url 'reservations:services' day.date.year day.date.month day.date.day as url %}
   hx-get="{{ url }}"
-  hx-target="#day"
+  hx-target="#services"
   hx-swap="outerHTML"
   hx-push-url="{{ url }}"
   @click = "
     selectedDate = '{{ day.date.isoformat }}'
     $nextTick(() => {
       document.getElementById('service-action').innerHTML = ''
-      const el = document.getElementById('day');
+      const el = document.getElementById('services');
       if (el) {
         window.scrollTo({
           top: el.offsetTop - 10,

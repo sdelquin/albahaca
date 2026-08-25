@@ -1,17 +1,18 @@
 <div id="service-action">
-  <div class="flex flex-col gap-3">
+  <div class="flex flex-col gap-3 sm:w-1/2">
     <h4>
       <i class="text-emerald-500 fa-solid fa-circle-check"></i>
       Reserva confirmada
     </h4>
-    {% include "reservations/manage/includes/reservation.html" %}
+    {% include "reservations/manage/includes/reservation.html" with show_buttons=False %}
   </div>
   
   <div
-    hx-get="{% url 'reservations:services' day.date.year day.date.month day.date.day %}"
+    hx-get="{% url 'reservations:service' day.date.year day.date.month day.date.day reservation.time_slot.service.code %}"
     hx-trigger="load"
-    hx-target="#day"
-    hx-swap="outerHTML"
+    hx-target="#services"
+    hx-swap="morph"
+    hx-ext="alpine-morph"
   >
   </div>
 </div>

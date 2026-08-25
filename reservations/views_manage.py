@@ -9,7 +9,7 @@ from .models import Reservation, Service, TimeSlot, Weekday
 
 
 @login_required
-def index(request):
+def index(request):  # noqa
     today = datetime.date.today()
     return redirect('reservations:month', year=today.year, month=today.month)
 
@@ -38,6 +38,25 @@ def services(request, year: int, month: int, day: int):
         'title': 'Reservas',
         'month': target_month,
         'day': target_day,
+    }
+    if request.htmx:
+        return render(request, 'reservations/manage/partials/services.html', context)
+    return render(request, 'reservations/manage/index.html', context)
+
+
+@login_required
+def service(request, year: int, month: int, day: int, service_code: str):
+    date = datetime.date(year, month, day)
+    target_month = Month(year, month, management_mode=True)
+    target_day = Day(date, management_mode=True)
+    target_day.check_for_reservation()
+    target_day.fetch_service_details()
+    service = Service.objects.get(code=service_code)
+    context = {
+        'title': 'Reservas',
+        'month': target_month,
+        'day': target_day,
+        'selected_service': service,
     }
     if request.htmx:
         return render(request, 'reservations/manage/partials/services.html', context)
