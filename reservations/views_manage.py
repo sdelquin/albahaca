@@ -103,10 +103,13 @@ def create_service_reservation(request, year: int, month: int, day: int, service
             time_slot_id = form.cleaned_data['time_slot']
             time_slot = TimeSlot.objects.get(id=time_slot_id)
             name = form.cleaned_data['name']
+            zone = form.cleaned_data['zone']
             phone = form.cleaned_data['phone']
             party_size = form.cleaned_data['party_size']
             remarks = form.cleaned_data['remarks']
-            if table_types := target_day.fetch_table_types_for_reservation(time_slot, party_size):
+            if table_types := target_day.fetch_table_types_for_reservation(
+                time_slot, party_size, zone
+            ):
                 reservation = Reservation.objects.create(
                     date=date,
                     time_slot=time_slot,
@@ -133,7 +136,7 @@ def create_service_reservation(request, year: int, month: int, day: int, service
             else:
                 form.add_error(
                     None,
-                    'No hay suficientes mesas disponibles para el tamaño de la reserva. Por favor, seleccione otro turno o reduzca el número de comensales.',
+                    'No hay suficientes mesas disponibles para el tamaño de la reserva. Por favor, seleccione otra zona, otro turno o reduzca el número de comensales.',
                 )
     else:
         form = CreateReservationForm(time_slot_choices=time_slots_choices, management_mode=True)

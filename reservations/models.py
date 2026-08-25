@@ -17,18 +17,27 @@ class Weekday(models.Model):
 
 
 class TableType(models.Model):
-    name = models.CharField(max_length=256, verbose_name='Nombre')
-    code = models.CharField(max_length=2, unique=True, verbose_name='Código')
+    class Zone(models.TextChoices):
+        INDOOR = 'I', 'Interior'
+        TERRACE = 'T', 'Terraza'
+
     seats = models.PositiveSmallIntegerField(verbose_name='Número de asientos')
     quantity = models.PositiveSmallIntegerField(verbose_name='Cantidad de mesas disponibles')
+    zone = models.CharField(
+        max_length=2, choices=Zone.choices, default=Zone.INDOOR, verbose_name='Zona'
+    )
+
+    @property
+    def code(self) -> str:
+        return f'{self.zone}{self.seats}'
 
     def __str__(self):
-        return f'{self.name} ({self.seats}p)'
+        return f'Mesa {self.seats}p ({self.get_zone_display()})'
 
     class Meta:
         verbose_name = 'Tipos de mesa'
         verbose_name_plural = 'Tipos de mesas'
-        ordering = ['seats']
+        ordering = ['zone', 'seats']
 
 
 class Service(models.Model):

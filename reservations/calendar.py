@@ -88,7 +88,7 @@ class Day:
         return None
 
     def fetch_table_types_for_reservation(
-        self, time_slot: TimeSlot, party_size: int
+        self, time_slot: TimeSlot, party_size: int, zone: str
     ) -> dict | None:
         service = self.get_service_from_time_slot(time_slot)
         left_party_size = party_size
@@ -99,6 +99,8 @@ class Day:
             assigned_table_type = None
             for table_type in service.table_types:
                 if table_type.free_tables == 0:
+                    continue
+                if table_type.zone != zone:
                     continue
                 if (distance := abs(table_type.seats - left_party_size)) <= min_distance:
                     min_distance = distance

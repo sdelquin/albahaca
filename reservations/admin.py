@@ -27,7 +27,7 @@ class WeekdayAdmin(admin.ModelAdmin):
 
 @admin.register(TableType)
 class TableTypeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'code', 'seats', 'quantity')
+    list_display = ('code', 'zone', 'seats', 'quantity')
 
 
 @admin.register(Service)

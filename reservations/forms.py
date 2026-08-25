@@ -3,9 +3,12 @@ import re
 from django import forms
 from django.conf import settings
 
+from .models import TableType
+
 
 class CreateReservationForm(forms.Form):
     time_slot = forms.ChoiceField(label='Hora', choices=[])
+    zone = forms.ChoiceField(label='Zona', choices=TableType.Zone.choices)
     name = forms.CharField(label='Nombre', max_length=256)
     party_size = forms.IntegerField(label='Número de comensales', min_value=1)
     phone = forms.CharField(label='Teléfono', max_length=20)
