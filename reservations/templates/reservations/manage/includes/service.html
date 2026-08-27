@@ -36,7 +36,7 @@
           <tr>
             <td>{{ table_type }}</td>
             <td>{{ table_type.total_tables }}</td>
-            <td>{{ table_type.reserved_tables }}</td>
+            <td class="{% if table_type.reserved_tables != 0 %} text-amber-300 {% endif %}">{{ table_type.reserved_tables }}</td>
             <td class="{% if table_type.free_tables == 0 %} text-red-500 {% else %} text-emerald-400 {% endif %}">
               {{ table_type.free_tables }}
             </td>

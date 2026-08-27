@@ -19,4 +19,5 @@ urlpatterns = [
         views.create_service_reservation,
         name='create-service-reservation',
     ),
+    path('<int:reservation_pk>/borrar/', views.delete_reservation, name='delete-reservation'),
 ]

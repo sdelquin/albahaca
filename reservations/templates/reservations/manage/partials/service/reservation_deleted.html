@@ -1,0 +1,19 @@
+<div
+  class="hidden"
+  hx-get="{% url 'reservations:list-service-reservations' reservation.date.year reservation.date.month reservation.date.day reservation.time_slot.service.code %}"
+  hx-trigger="load"
+  hx-target="#service-action"
+  hx-swap="morph"
+  hx-ext="alpine-morph"
+>
+</div>
+
+<div
+  class="hidden"
+  hx-get="{% url 'reservations:service' reservation.date.year reservation.date.month reservation.date.day reservation.time_slot.service.code %}"
+  hx-trigger="load"
+  hx-target="#services"
+  hx-swap="morph"
+  hx-ext="alpine-morph"
+>
+</div>

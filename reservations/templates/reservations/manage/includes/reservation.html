@@ -1,4 +1,8 @@
-<div class="flex flex-col h-full rounded bg-emerald-950 shadow-lg overflow-hidden">
+<div
+  id="reservation-{{ reservation.pk }}"
+  class="flex flex-col h-full rounded bg-emerald-950 shadow-lg overflow-hidden"
+  x-data="{ showDeleteModal: false }"
+>
   <!-- Header -->
   <div class="flex justify-between items-center gap-1 bg-emerald-800 px-2 py-1">
     <p>{{ reservation.name }}</p>
@@ -41,7 +45,10 @@
     {% if show_buttons %}
       <!-- Botones con acciones -->
       <div class="flex gap-2">
-        <button class="button slim bg-red-800">
+        <button
+          class="button slim bg-red-800"
+          @click="showDeleteModal = true"
+        >
           <i class="fa-regular fa-trash-can"></i>
           Borrar
         </button>
@@ -54,6 +61,9 @@
           Dentro
         </button>
       </div>
+
+      <!-- MODAL PARA BORRAR -->
+      {% include "reservations/manage/includes/delete_reservation.html" %}
     {% endif %}
   </div>
 </div>

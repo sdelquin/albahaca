@@ -1,7 +1,8 @@
 import datetime
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_POST
 
 from .calendar import Day, Month
 from .forms import CreateReservationForm
@@ -152,3 +153,15 @@ def create_service_reservation(request, year: int, month: int, day: int, service
             request, 'reservations/manage/partials/service/create_reservation.html', context
         )
     return render(request, 'reservations/manage/index.html', context)
+
+
+@login_required
+@require_POST
+def delete_reservation(request, reservation_pk):  # noqa
+    reservation = get_object_or_404(Reservation, pk=reservation_pk)
+    reservation.delete()
+    return render(
+        request,
+        'reservations/manage/partials/service/reservation_deleted.html',
+        {'reservation': reservation},
+    )
