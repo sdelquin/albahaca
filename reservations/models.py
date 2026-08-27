@@ -129,6 +129,7 @@ class Reservation(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    arrived_at = models.DateTimeField(null=True, blank=True, verbose_name='Llegada')
 
     def __str__(self):
         return f'{self.name} - {self.date} {self.time_slot} - {self.party_size} comensales'

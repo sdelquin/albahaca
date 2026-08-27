@@ -1,0 +1,46 @@
+<div
+  x-show="showArrivalModal"
+  x-cloak
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+>
+  <div
+    class="w-full max-w-md rounded-lg bg-zinc-800 p-6 shadow-xl"
+    @click.outside="showArrivalModal = false"
+  >
+    <h3 class="text-xl font-bold">
+      Marcar llegada
+    </h3>
+
+    <p class="mt-4">
+      ¿Estás seguro de que quieres marcar la llegada de la reserva de
+      <strong>{{ reservation.name }}</strong>?
+    </p>
+
+    <form
+      method="post"
+      hx-post="{% url 'reservations:arrival-reservation' reservation.pk %}"
+      hx-target="#service-action"
+      hx-swap="beforeend"
+      @htmx:after-request="showArrivalModal = false"
+      class="mt-6 flex justify-end gap-2"
+    >
+      {% csrf_token %}
+
+      <button
+        type="button"
+        class="button slim bg-red-800"
+        @click="showArrivalModal = false"
+      >
+        Cancelar
+      </button>
+
+      <button
+        type="submit"
+        class="button slim"
+      >
+        <i class="fa-solid fa-door-open"></i>
+        Marcar llegada
+      </button>
+    </form>
+  </div>
+</div>

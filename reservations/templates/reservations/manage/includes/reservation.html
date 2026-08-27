@@ -1,7 +1,12 @@
 <div
   id="reservation-{{ reservation.pk }}"
   class="flex flex-col h-full rounded bg-emerald-950 shadow-lg overflow-hidden"
-  x-data="{ showDeleteModal: false }"
+  x-data="
+    {
+      showDeleteModal: false,
+      showArrivalModal: false,
+    }
+  "
 >
   <!-- Header -->
   <div class="flex justify-between items-center gap-1 bg-emerald-800 px-2 py-1">
@@ -56,14 +61,20 @@
           <i class="fa-solid fa-pen-to-square"></i>
           Editar
         </button>
-        <button class="button slim bg-indigo-800">
+        <button
+          class="button slim bg-indigo-800"
+          @click="showArrivalModal = true"
+        >
           <i class="fa-solid fa-door-open"></i>
-          Dentro
+          Llegada
         </button>
       </div>
 
       <!-- MODAL PARA BORRAR -->
       {% include "reservations/manage/includes/delete_reservation.html" %}
+
+      <!-- MODAL PARA MARCAR LLEGADA -->
+      {% include "reservations/manage/includes/arrival_reservation.html" %}
     {% endif %}
   </div>
 </div>

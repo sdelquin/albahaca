@@ -72,7 +72,11 @@ def list_service_reservations(request, year: int, month: int, day: int, service_
     target_day.check_for_reservation()
     target_day.fetch_service_details()
     service = Service.objects.get(code=service_code)
-    reservations = Reservation.objects.filter(date=date, time_slot__service=service)
+    reservations = Reservation.objects.filter(
+        date=date,
+        time_slot__service=service,
+        arrived_at__isnull=True,
+    )
     context = {
         'title': 'Reservas',
         'month': target_month,
@@ -163,5 +167,18 @@ def delete_reservation(request, reservation_pk):  # noqa
     return render(
         request,
         'reservations/manage/partials/service/reservation_deleted.html',
+        {'reservation': reservation},
+    )
+
+
+@login_required
+@require_POST
+def arrival_reservation(request, reservation_pk):  # noqa
+    reservation = get_object_or_404(Reservation, pk=reservation_pk)
+    reservation.arrived_at = datetime.datetime.now()
+    reservation.save()
+    return render(
+        request,
+        'reservations/manage/partials/service/reservation_arrived.html',
         {'reservation': reservation},
     )
