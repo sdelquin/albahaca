@@ -1,13 +1,28 @@
-<div id="service-action">
+<div id="service-action" x-data="{ search: '' }">
   {% if reservations is not None %}
     {% if reservations %}
       <h4 class="mb-3">
         <span class="text-3xl font-bold">{{ reservations|length }}</span>
         reserva{{ reservations|length|pluralize }}
       </h4>
+      <div class="mb-4">
+        <input
+          type="search"
+          x-model.trim="search"
+          placeholder="Buscar por nombre o teléfono..."
+        >
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {% for reservation in reservations %}
-          {% include "reservations/manage/includes/reservation.html" with show_buttons=True %}
+          <div
+            x-show="
+              !search ||
+              '{{ reservation.name|lower|escapejs }}'.includes(search.toLowerCase()) ||
+              '{{ reservation.phone|lower|escapejs }}'.includes(search.toLowerCase())
+            "
+          >
+            {% include "reservations/manage/includes/reservation.html" with show_buttons=True %}
+          </div>
         {% endfor %}
       </div>
     {% else %}
