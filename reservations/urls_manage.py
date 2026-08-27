@@ -19,6 +19,11 @@ urlpatterns = [
         views.create_service_reservation,
         name='create-service-reservation',
     ),
+    path(
+        '<int:reservation_pk>/editar/',
+        views.edit_reservation,
+        name='edit-reservation',
+    ),
     path('<int:reservation_pk>/borrar/', views.delete_reservation, name='delete-reservation'),
     path('<int:reservation_pk>/llegada/', views.arrival_reservation, name='arrival-reservation'),
 ]

@@ -34,7 +34,7 @@ class Day:
             self.enabled = False
             self.details = 'No reservable: Cerrado'
 
-    def fetch_service_details(self) -> None:
+    def fetch_service_details(self, *, excluded_reservation: Reservation | None = None) -> None:
         self.services = []
         now = datetime.datetime.now()
         for service in Service.get_services_for_date(self.date):
@@ -54,12 +54,15 @@ class Day:
             total_tables, reserved_tables = 0, 0
             for table_type in TableType.objects.all():
                 table_type.total_tables = table_type.quantity
+                reservations = Reservation.objects.filter(
+                    date=self.date,
+                    time_slot__service=service,
+                    table_types=table_type,
+                )
+                if excluded_reservation:
+                    reservations = reservations.exclude(pk=excluded_reservation.pk)
                 table_type.reserved_tables = (
-                    Reservation.objects.filter(
-                        date=self.date,
-                        time_slot__service=service,
-                        table_types=table_type,
-                    ).aggregate(
+                    reservations.aggregate(
                         total_reserved=models.Sum('reservation_table_type_details__quantity')
                     )['total_reserved']
                     or 0

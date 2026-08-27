@@ -25,6 +25,10 @@
     &.slim {
       @apply px-2 py-1 text-sm;
     }
+
+    &.cancel {
+      @apply bg-zinc-600 hover:brightness-90;
+    }
   }
 
   .weekday {

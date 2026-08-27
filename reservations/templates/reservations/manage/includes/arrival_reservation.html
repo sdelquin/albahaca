@@ -19,6 +19,7 @@
     <form
       method="post"
       hx-post="{% url 'reservations:arrival-reservation' reservation.pk %}"
+      hx-push-url="true"
       hx-target="#service-action"
       hx-swap="beforeend"
       @htmx:after-request="showArrivalModal = false"
@@ -28,7 +29,7 @@
 
       <button
         type="button"
-        class="button slim bg-red-800"
+        class="button slim cancel"
         @click="showArrivalModal = false"
       >
         Cancelar

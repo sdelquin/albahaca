@@ -57,7 +57,13 @@
           <i class="fa-regular fa-trash-can"></i>
           Borrar
         </button>
-        <button class="button slim bg-yellow-700">
+        <button
+          class="button slim bg-yellow-700"
+          hx-get="{% url 'reservations:edit-reservation' reservation.pk %}"
+          hx-push-url="true"
+          hx-target="#service-action"
+          hx-swap="outerHTML"
+        >
           <i class="fa-solid fa-pen-to-square"></i>
           Editar
         </button>

@@ -160,6 +160,73 @@ def create_service_reservation(request, year: int, month: int, day: int, service
 
 
 @login_required
+def edit_reservation(request, reservation_pk):
+    reservation = get_object_or_404(Reservation, pk=reservation_pk)
+    date = reservation.date
+    target_month = Month(date.year, date.month, management_mode=True)
+    target_day = Day(date, management_mode=True)
+    target_day.check_for_reservation()
+    target_day.fetch_service_details(excluded_reservation=reservation)
+    service = reservation.time_slot.service
+    time_slots_choices = service.time_slots.all().values_list('id', 'time')
+    initial = {
+        'time_slot': reservation.time_slot_id,
+        'zone': reservation.reservation_table_type_details.first().table_type.zone,
+        'name': reservation.name,
+        'party_size': reservation.party_size,
+        'phone': reservation.phone,
+        'remarks': reservation.remarks,
+    }
+    if request.method == 'POST':
+        form = CreateReservationForm(
+            request.POST, time_slot_choices=time_slots_choices, management_mode=True
+        )
+        if form.is_valid():
+            time_slot = TimeSlot.objects.get(id=form.cleaned_data['time_slot'])
+            table_types = target_day.fetch_table_types_for_reservation(
+                time_slot,
+                form.cleaned_data['party_size'],
+                form.cleaned_data['zone'],
+            )
+            if table_types:
+                reservation.time_slot = time_slot
+                reservation.name = form.cleaned_data['name']
+                reservation.phone = form.cleaned_data['phone']
+                reservation.party_size = form.cleaned_data['party_size']
+                reservation.remarks = form.cleaned_data['remarks']
+                reservation.save()
+                reservation.reservation_table_type_details.all().delete()
+                for table_type, quantity in table_types.items():
+                    reservation.table_types.add(table_type, through_defaults={'quantity': quantity})
+                return render(
+                    request,
+                    'reservations/manage/partials/service/reservation_edited.html',
+                    {'reservation': reservation},
+                )
+            form.add_error(
+                None,
+                'No hay suficientes mesas disponibles para el tamaño de la reserva. Por favor, seleccione otra zona, otro turno o reduzca el número de comensales.',
+            )
+    else:
+        form = CreateReservationForm(
+            initial=initial, time_slot_choices=time_slots_choices, management_mode=True
+        )
+    context = {
+        'title': 'Reservas',
+        'month': target_month,
+        'day': target_day,
+        'selected_service': service,
+        'form': form,
+        'reservation': reservation,
+    }
+    if request.htmx:
+        return render(
+            request, 'reservations/manage/partials/service/edit_reservation.html', context
+        )
+    return render(request, 'reservations/manage/index.html', context)
+
+
+@login_required
 @require_POST
 def delete_reservation(request, reservation_pk):  # noqa
     reservation = get_object_or_404(Reservation, pk=reservation_pk)

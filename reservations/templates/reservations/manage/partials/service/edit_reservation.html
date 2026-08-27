@@ -1,13 +1,13 @@
 <div id="service-action" class="sm:w-1/2">
   <h4 class="mb-3 text-lg sm:text-2xl">
-    <i class="fa-solid fa-circle-plus text-accent"></i>
-    Nueva reserva
+    <i class="fa-solid fa-pen-to-square text-accent"></i>
+    Editar reserva
   </h4>
   <form
     method="post"
     novalidate
     class="flex flex-col gap-2"
-    hx-post="{% url 'reservations:create-service-reservation' day.date.year day.date.month day.date.day selected_service.code %}"
+    hx-post="{% url 'reservations:edit-reservation' reservation.pk %}"
     hx-target="#service-action"
     hx-swap="outerHTML"
   >
@@ -18,7 +18,8 @@
       <button
         type="button"
         class="button cancel"
-        hx-get="{% url 'reservations:list-service-reservations' day.date.year day.date.month day.date.day selected_service.code %}"
+        hx-get="{% url 'reservations:list-service-reservations' reservation.date.year reservation.date.month reservation.date.day reservation.time_slot.service.code %}"
+        hx-push-url="true"
         hx-target="#service-action"
         hx-swap="outerHTML"
       >

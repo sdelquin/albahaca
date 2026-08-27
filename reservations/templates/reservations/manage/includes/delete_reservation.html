@@ -19,6 +19,7 @@
     <form
       method="post"
       hx-post="{% url 'reservations:delete-reservation' reservation.pk %}"
+      hx-push-url="true"
       hx-target="#service-action"
       hx-swap="beforeend"
       @htmx:after-request="showDeleteModal = false"
@@ -28,7 +29,7 @@
 
       <button
         type="button"
-        class="button slim"
+        class="button slim cancel"
         @click="showDeleteModal = false"
       >
         Cancelar
