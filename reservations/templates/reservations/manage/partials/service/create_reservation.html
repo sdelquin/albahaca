@@ -21,6 +21,7 @@
         hx-get="{% url 'reservations:list-service-reservations' day.date.year day.date.month day.date.day selected_service.code %}"
         hx-target="#service-action"
         hx-swap="outerHTML"
+        hx-push-url="true"
       >
         Cancelar
       </button>
