@@ -1,12 +1,15 @@
 # Run development server
 [group('server')]
 dev port="8000":
+    #!/usr/bin/env bash
+    echo -e "🚨 \033[31mRun 'just tw' to watch changes on Tailwind files!\033[0m"
     uv run manage.py runserver {{ port }}
 
 # Run development server with external access
 [group('server')]
 dev0 port="8000":
     #!/usr/bin/env bash
+    echo -e "🚨 \033[31mRun 'just tw' to watch changes on Tailwind files!\033[0m"
     if [ "{{ os() }}" = "macos" ]; then
         IP=$(ipconfig getifaddr "$(route get default | awk '/interface: / {print $2}')")
     else
